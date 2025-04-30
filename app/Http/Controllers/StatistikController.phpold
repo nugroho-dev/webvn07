@@ -1,0 +1,197 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Support\Facades\Http;
+use App\Models\Hero;
+use App\Models\Services;
+use App\Models\Link;
+use App\Models\Linkskm;
+use Illuminate\Http\Request;
+use Carbon\Carbon;
+use App\Models\Folder;
+
+class StatistikController extends Controller
+{
+        //get terbit stastistik perizinan non berusaha
+    public function terbit()
+    {
+        $date1 = date("Y-m-01");
+        $date2 = date("Y-m-d");
+        $tahun = date("Y");
+        $response = Http::get('https://app.magelangkota.go.id/sirekap/reports/sicantik/rekap_statistik_tte_json.php', [
+            'send' => $date1.';'.$date2
+        ]);
+        
+        $dataterbit = $response['data'];
+        $date1x = Carbon::parse($date1);
+        $dateid1 = $date1x->locale('id')->isoFormat('Do MMM YYYY');
+        $date2x = Carbon::parse($date2);
+        $dateid2 = $date2x->locale('id')->isoFormat('Do MMM YYYY');
+        return view('statistik.terbit', ["title" => "Statistik Perizinan", "heroes" => Hero::all(), "services" => Services::all(), "links" => Link::all(), "linkskm" => Linkskm::all(), 'dataterbits' => $dataterbit, "tahun" => $tahun, "date1" => $dateid1, "date2" => $dateid2,  "folders" => Folder::limit(6)->get()]);
+    }
+    //get total per bulan terbit stastistik perizinan non berusaha
+    public function rekap()
+    {
+        
+        $tahun = date("Y");
+        $responsebulan = Http::get('https://app.magelangkota.go.id/sirekap/reports/sicantik/rekap_total_perbulan_json.php?send', [
+            'send' => $tahun
+        ]);
+
+        $dataterbitbulan = $responsebulan['data'];
+        
+        return view('statistik.rekap', ["title" => "Statistik Perizinan", "heroes" => Hero::all(), "services" => Services::all(), "links" => Link::all(), "linkskm" => Linkskm::all(), 'dataterbitbulans' => $dataterbitbulan, "tahun" => $tahun,  "folders" => Folder::limit(6)->get()]);
+    }
+    public function nib()
+    {
+        $date1 = date("Y-m-01");
+        $date2 = date("Y-m-d");
+        $tahun = date("Y");
+      
+        $response = Http::get('https://app.magelangkota.go.id/sirekap/reports/oss_rba/rekap_nib_json.php',[
+            'send' => $date1 . ';' . $date2
+        ]);
+        $dataterbit = $response['data'];
+        $date1x = Carbon::parse($date1);
+        $dateid1 = $date1x->locale('id')->isoFormat('Do MMM YYYY');
+        $date2x = Carbon::parse($date2);
+        $dateid2 = $date2x->locale('id')->isoFormat('Do MMM YYYY');
+        return view('statistik.nib', ["title" => "Statistik Perizinan", "heroes" => Hero::all(), "services" => Services::all(), "links" => Link::all(), "linkskm" => Linkskm::all(), 'dataterbits' => $dataterbit, "tahun" => $tahun, "date1" => $dateid1, "date2" => $dateid2,  "folders" => Folder::limit(6)->get()]);
+    }
+    //get total per bulan terbit stastistik perizinan non berusaha
+    public function izin()
+    {
+
+        $date1 = date("Y-m-01");
+        $date2 = date("Y-m-d");
+        $tahun = date("Y");
+
+        $response = Http::get('https://app.magelangkota.go.id/sirekap/reports/oss_rba/rekap_izin_json.php', [
+            'send' => $date1 . ';' . $date2
+        ]);
+        $dataterbit = $response['data'];
+        $date1x = Carbon::parse($date1);
+        $dateid1 = $date1x->locale('id')->isoFormat('Do MMM YYYY');
+        $date2x = Carbon::parse($date2);
+        $dateid2 = $date2x->locale('id')->isoFormat('Do MMM YYYY');
+        return view('statistik.izin', ["title" => "Statistik Perizinan", "heroes" => Hero::all(), "services" => Services::all(), "links" => Link::all(), "linkskm" => Linkskm::all(), 'dataterbits' => $dataterbit, "tahun" => $tahun, "date1" => $dateid1, "date2" => $dateid2,  "folders" => Folder::limit(6)->get()]);
+    }
+
+    //POST terbit stastistik perizinan non berusaha
+    public function viewgraphterbit(Request $request)
+    {
+        if ($request->from && $request->to) {
+            $date1 = $request->from;
+            $date2 = $request->to;
+        } else {
+            $date1 = date("Y-m-01");
+            $date2 = date("Y-m-d");
+        }
+        $response = Http::get('https://app.magelangkota.go.id/sirekap/reports/sicantik/rekap_statistik_tte_json.php?send', [
+            'send' => $date1 . ';' . $date2
+        ]);
+        $dataterbit = $response['data'];
+        $date1x = Carbon::parse($date1);
+        $dateid1 = $date1x->locale('id')->isoFormat('Do MMM YYYY');
+        $date2x = Carbon::parse($date2);
+        $dateid2 = $date2x->locale('id')->isoFormat('Do MMM YYYY');
+        return view('statistik.terbit', ["title" => "Statistik Perizinan", "heroes" => Hero::all(), "services" => Services::all(), "links" => Link::all(), "linkskm" => Linkskm::all(), 'dataterbits' => $dataterbit,  "date1" => $dateid1, "date2" => $dateid2,  "folders" => Folder::limit(6)->get()]);
+    }
+    //POST terbit stastistik perizinan non berusaha
+    public function viewgraphnib(Request $request)
+    {
+        if ($request->from && $request->to) {
+            $date1 = $request->from;
+            $date2 = $request->to;
+        } else {
+            $date1 = date("Y-m-01");
+            $date2 = date("Y-m-d");
+        }
+        $response = Http::get('https://app.magelangkota.go.id/sirekap/reports/oss_rba/rekap_nib_json.php', [
+            'send' => $date1 . ';' . $date2
+        ]);
+        $dataterbit = $response['data'];
+        $date1x = Carbon::parse($date1);
+        $dateid1 = $date1x->locale('id')->isoFormat('Do MMM YYYY');
+        $date2x = Carbon::parse($date2);
+        $dateid2 = $date2x->locale('id')->isoFormat('Do MMM YYYY');
+        return view('statistik.nib', ["title" => "Statistik Perizinan", "heroes" => Hero::all(), "services" => Services::all(), "links" => Link::all(), "linkskm" => Linkskm::all(), 'dataterbits' => $dataterbit,  "date1" => $dateid1, "date2" => $dateid2,  "folders" => Folder::limit(6)->get()]);
+    }
+    //POST terbit stastistik perizinan non berusaha
+    public function viewgraphizin(Request $request)
+    {
+        if ($request->from && $request->to) {
+            $date1 = $request->from;
+            $date2 = $request->to;
+        } else {
+            $date1 = date("Y-m-01");
+            $date2 = date("Y-m-d");
+        }
+        $response = Http::get('https://app.magelangkota.go.id/sirekap/reports/oss_rba/rekap_izin_json.php', [
+            'send' => $date1 . ';' . $date2
+        ]);
+        $dataterbit = $response['data'];
+        $date1x = Carbon::parse($date1);
+        $dateid1 = $date1x->locale('id')->isoFormat('Do MMM YYYY');
+        $date2x = Carbon::parse($date2);
+        $dateid2 = $date2x->locale('id')->isoFormat('Do MMM YYYY');
+        return view('statistik.izin', ["title" => "Statistik Perizinan", "heroes" => Hero::all(), "services" => Services::all(), "links" => Link::all(), "linkskm" => Linkskm::all(), 'dataterbits' => $dataterbit,  "date1" => $dateid1, "date2" => $dateid2,  "folders" => Folder::limit(6)->get()]);
+    }
+    //POST terbit stastistik per bulan terbit stastistik perizinan non berusaha
+    public function viewgraphrekap(Request $request)
+    {
+       
+        if ($request->tahun) {
+            $tahun = $request->tahun;
+        } else {
+            $tahun = date("Y");
+        }
+
+        $responsebulan = Http::get('https://app.magelangkota.go.id/sirekap/reports/sicantik/rekap_total_perbulan_json.php?send', [
+            'send' => $tahun
+        ]);
+
+      
+        $dataterbitbulan = $responsebulan['data'];
+        
+        return view('statistik.rekap', ["title" => "Statistik Perizinan", "heroes" => Hero::all(), "services" => Services::all(), "links" => Link::all(), "linkskm" => Linkskm::all(),  'dataterbitbulans' => $dataterbitbulan, "tahun" => $tahun,  "folders" => Folder::limit(6)->get()]);
+    }
+    //get total per bulan terbit stastistik perizinan  berusaha
+    public function realisasiinvestasi()
+    {
+        $date1 = date("Y-m");
+        
+        $responserealisasi = Http::get('https://app.magelangkota.go.id/sirekap/reports/oss_rba/realisasi_investasi_json.php', [
+            'send'=> $date1
+        ]);
+      
+        $dataterbitx = $responserealisasi['data'];
+      
+        $date1x = Carbon::parse($date1);
+        $dateid1 = $date1x->locale('id')->isoFormat('MMM YYYY');
+        
+        return view('statistik.realisasiinvestasi', ["title" => "Statistik Realisasi Investasi", "heroes" => Hero::all(), "services" => Services::all(), "links" => Link::all(), "linkskm" => Linkskm::all(), "dataterbits" => $dataterbitx, "date1" => $dateid1,  "folders" => Folder::limit(6)->get()]);
+    }
+    public function viewgraphinvestasi(Request $request)
+    {
+
+        if ($request->tahun) {
+            $a = Carbon::parse($request->tahun);
+            $tahun = $a->isoFormat('YYYY-MM');
+        } else {
+            $tahun = date("Y-m");
+        }
+        $responserealisasi = Http::get('https://app.magelangkota.go.id/sirekap/reports/oss_rba/realisasi_investasi_json.php', [
+            'send' => $tahun
+        ]);
+
+
+        $dataterbitx = $responserealisasi['data'];
+        //dd(count($responserealisasi['data']));
+        $date1x = Carbon::parse($tahun);
+        $dateid1 = $date1x->locale('id')->isoFormat('MMM YYYY');
+
+        return view('statistik.realisasiinvestasi', ["title" => "Statistik Realisasi Investasi", "heroes" => Hero::all(), "services" => Services::all(), "links" => Link::all(), "linkskm" => Linkskm::all(), "dataterbits" => $dataterbitx, "date1" => $dateid1,  "folders" => Folder::limit(6)->get()]);
+    }
+}

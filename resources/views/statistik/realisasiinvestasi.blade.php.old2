@@ -1,0 +1,139 @@
+@extends('layouts.main')
+
+@section('container')
+@extends('layouts.breadcrumb')
+
+
+
+<section id="blog" class="blog">
+  <div class="container" data-aos="fade-up">
+    <div class="row d-flex justify-content-center">
+      <div class="col-lg-12 entries ">
+        <article class="entry entry-single text-capitalize">
+          <div class="row d-flex justify-content-end">
+            <div class="col-md-4 ">
+              <form class="g-3" action="/statistik/investasi/realisasi" method="post">
+                @csrf
+                <div class="input-group ">
+                  
+                  <input type="text" name="tahun" class="form-control" id="from" placeholder="Tanggal" autocomplete="off">
+                
+                  <button type="submit" class="btn btn-primary">Lihat</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div id="Chart"></div>
+          <div id="container"></div>
+        </article>
+        <!-- End blog entry -->
+      </div>
+    
+      
+    </div>
+   
+  </div>
+</section><!-- End About Section -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script>
+  Highcharts.chart('Chart', {
+  chart: {
+    type: 'bar'
+  },
+  title: {
+    text: 'Grafik Realisasi Investasi Per Sektor Usaha Periode {{ $date1 }}'
+  },
+  subtitle: {
+    text: 'Sumber : SiRekap DPMPTSP Kota Magelang'
+  },
+  xAxis: {
+    categories: [
+      @foreach($dataterbits as $dataterbit)
+                '{{ $dataterbit['sektor'] }}',
+      @endforeach],
+    title: {
+      text: 'Sektor'
+    }
+  },
+  yAxis: {
+    min: 0,
+    title: {
+      text: 'Nilai Investasi',
+      align: 'high'
+    },
+    labels: {
+      overflow: 'justify',
+       format: 'Rp {text}'
+    }
+  },
+  tooltip: {
+    valueSuffix: ''
+  },
+  plotOptions: {
+    bar: {
+      dataLabels: {
+        enabled: true
+      }
+    }
+  },
+  
+  credits: {
+    enabled: false
+  },
+  series: [{
+    name: 'Nilai Investasi',
+    data: [
+      @foreach($dataterbits as $dataterbit)
+        {{ $dataterbit['nilai'] }},
+     @endforeach]
+  }]
+});
+</script>
+<script>
+  // Data retrieved https://en.wikipedia.org/wiki/List_of_cities_by_average_temperature
+Highcharts.chart('container', {
+    chart: {
+        type: 'line'
+    },
+    title: {
+        text: 'Grafik Realisasi Investasi di Kota Magelang'
+    },
+    subtitle: {
+        text: 'Sumber: Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu Kota Magelang'
+    },
+    xAxis: {
+        categories: ['2018', '2019', '2020', '2021', '2022']
+    },
+    yAxis: {
+        title: {
+            text: 'Nilai Investasi (Rp)'
+        }
+    },
+    plotOptions: {
+        line: {
+            dataLabels: {
+                enabled: true
+            },
+            enableMouseTracking: false
+        }
+    },
+    series: [{
+        name: 'PMDN',
+        data: [474004000000,290295000000,375560000000,570666185599,772609268131]
+    }, {
+        name: 'PMA',
+        data: [11060000000,24119000000,4249000000,12770983203,50906157000]
+    }, {
+        name: 'TOTAL',
+        data: [ 485064000000,314414000000,379809000000,583437168802,823515425131]
+    }]
+});
+</script>
+
+ 
+
+@endsection
