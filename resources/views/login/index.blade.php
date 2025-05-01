@@ -25,7 +25,7 @@
                             <div class="text-center text-md-center mb-4 mt-md-0">
                                 <h1 class="mb-0 h3">Masuk ke platform kami</h1>
                             </div>
-                            <form action="/login" method="post" class="mt-4">
+                            <form action="/arep/mlebu/le" method="post" class="mt-4">
                                 <!-- Form -->
                                 @csrf
                                 <div class="form-group mb-4">
