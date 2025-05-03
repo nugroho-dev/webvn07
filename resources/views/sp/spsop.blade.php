@@ -7,24 +7,23 @@
     <div class="container-fluid" data-aos="fade-up">
 
       <div class="row">
-        <div class="col-lg-9 col-md-9 col-sm-12 entries">
+        <div class="col-lg-9 col-md-9 col-sm-12 entries ">
+          <div class="table-responsive">
           <table class="table table-striped table-hover ">
             <thead>
               <tr class="text-center align-middle">
                 <th scope="col">Jenis Izin</th>
                 <th scope="col">Waktu Penyelesaian</th>
                 <th scope="col">Biaya</th>
-                <th scope="col">Aplikasi Permohonan</th>
                 <th scope="col">Persyaratan</th>
               </tr>
             </thead>
             <tbody>
               @foreach($items as $item)
               <tr class="font-monospace fw-lighter align-middle">
-                <th class="text-nowrap" scope="row" >{{ $item->title }}</th>
+                <th  scope="row" >{{ $item->title }}</th>
                 <td class="text-wrap">{!! $item->waktu !!}</td>
                 <td >{!! $item->biaya !!}</td>
-                <td>{{ $item->categoriesps->name }}</td>
                 <td><div class="text-center">
                   <a href="/spsop/{{ $item->slug }}" class="btn btn-danger"><i class="bi bi-eye"></i> Lihat</a> 
                   </div></td>
@@ -32,7 +31,7 @@
               @endforeach
             </tbody>
           </table>
-        
+          </div>
           <div class="blog-pagination">
             {{ $items->links() }}
           </div>

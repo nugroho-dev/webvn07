@@ -85,7 +85,7 @@
             </div>
           </div>
          
-        
+      <div class="table-responsive">
         <table class="table table-hover">
           <thead>
             <tr>
@@ -112,6 +112,7 @@
             @endforeach
           </tbody>
         </table>
+      </div>
         <div class="blog-pagination">
           @php
           $paginationHtml = $items->appends(['syarat' => request('syarat')])->withPath(url()->current())->links()->toHtml();

@@ -38,20 +38,14 @@
               <li class="dropdown"><a href="#" class="{{ Request::is('perizinan*')?'active':'' }} {{ Request::is('spsop*')?'active':'' }} {{ Request::is('tracking*')?'active':'' }}">Perizinan<i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="/perizinan/alur" class="{{ Request::is('perizinan/alur*')?'active':'' }}">Alur Perizinan</a></li>
-                  <li class="dropdown" ><a href="#" class="{{ Request::is('spsop*')?'active':'' }}">Standar Pelayanan<i class="bi bi-chevron-right"></i></a>
+                  <li class="dropdown" ><a href="#" class="{{ Request::is('spsop*')?'active':'' }}">Jenis Izin & Persyaratan<i class="bi bi-chevron-right"></i></a>
                     <ul>
-                      <li ><a class="{{ Request::is('online-single-submission*')?'active':'' }}" href="https://dpmptsp.magelangkota.go.id/spsop?category=online-single-submission" >Online Single Submission (OSS)</a></li>
-                      <li ><a class="{{ Request::is('izin-sicantik*')?'active':'' }}" href="https://dpmptsp.magelangkota.go.id/spsop?category=izin-sicantik" >Izin SiCANTIK</a></li>
-                      <li ><a class="{{ Request::is('persetujuan-gedung-bangunan*')?'active':'' }}" href="https://dpmptsp.magelangkota.go.id/spsop?category=persetujuan-gedung-bangunan">Persetujuan Gedung Bangunan</a></li>
+                      <li ><a class="{{ Request::is('online-single-submission*')?'active':'' }}" href="/spsop?category=online-single-submission" >Online Single Submission (OSS)</a></li>
+                      <li ><a class="{{ Request::is('izin-sicantik*')?'active':'' }}" href="/spsop?category=izin-sicantik" >Izin SiCANTIK</a></li>
+                      <li ><a class="{{ Request::is('persetujuan-gedung-bangunan*')?'active':'' }}" href="/spsop?category=persetujuan-gedung-bangunan">Persetujuan Gedung Bangunan</a></li>
                     </ul>
                   </li>
-                  <li class="dropdown"><a href="#">Standar Operasional Prosedur<i class="bi bi-chevron-right"></i></a>
-                    <ul>
-                      <li><a href="https://dpmptsp.magelangkota.go.id/spsop?category=online-single-submission" >Online Single Submission (OSS)</a></li>
-                      <li><a href="https://dpmptsp.magelangkota.go.id/spsop?category=izin-sicantik" >Izin SiCANTIK</a></li>
-                      <li><a href="https://dpmptsp.magelangkota.go.id/spsop?category=persetujuan-gedung-bangunan">Persetujuan Gedung Bangunan</a></li>
-                    </ul>
-                  </li>
+                  
 		  <li><a href="https://dpmptsp.magelangkota.go.id/posts/jadwal-pelayanan-dpmptsp-kota-magelang" >Jam Pelayanan</a></li>
                   <li><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class="{{ Request::is('tracking*')?'active':'' }}">Tracking Permohonan</a></li>
                 <li><a href="/perizinan/verifikasi" class="{{ Request::is('perizinan/verifikasi*')?'active':'' }}">Verifikasi Izin</a></li>
