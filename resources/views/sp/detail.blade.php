@@ -18,9 +18,15 @@
     .table tr:last-child td, .table tr:last-child th {
       border-bottom: none;
     }
-    img.profile-img {
-      width: 100px;
-      border-radius: 0.5rem;
+  div.gallery {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+    }
+  div.gallery img {
+    width: 100%;
+    height: auto;
     }
     /* Hanya tampilkan tabel saat print */
     @media print {
@@ -104,7 +110,7 @@
               <th>Sistem, mekanisme, dan prosedur</th>
               <td>
                 @if($izin->mekanisme)
-                <div class="profile-img">{!! $izin->mekanisme !!}</div>
+                <div class="gallery">{!! $izin->mekanisme !!}</div>
                 @else
                 <p class="text-capitalize">informasi belum tersedia</p>
                 @endif
