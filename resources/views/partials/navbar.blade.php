@@ -38,7 +38,7 @@
               <li class="dropdown"><a href="#" class="{{ Request::is('perizinan*')?'active':'' }} {{ Request::is('spsop*')?'active':'' }} {{ Request::is('tracking*')?'active':'' }}">Perizinan<i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="/perizinan/alur" class="{{ Request::is('perizinan/alur*')?'active':'' }}">Alur Perizinan</a></li>
-                  <li class="dropdown" ><a href="#" class="{{ Request::is('spsop*')?'active':'' }}">Jenis Izin & Persyaratan<i class="bi bi-chevron-right"></i></a>
+                  <li class="dropdown" ><a href="#" class="{{ Request::is('spsop*')?'active':'' }}">Jenis Layanan & Persyaratan<i class="bi bi-chevron-right"></i></a>
                     <ul>
                       <li ><a class="{{ Request::is('online-single-submission*')?'active':'' }}" href="/spsop?category=online-single-submission" >Online Single Submission (OSS)</a></li>
                       <li ><a class="{{ Request::is('izin-sicantik*')?'active':'' }}" href="/spsop?category=izin-sicantik" >Izin SiCANTIK</a></li>
