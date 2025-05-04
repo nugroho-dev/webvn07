@@ -14,6 +14,6 @@ class VerifikasiController extends Controller
 {
     public function index()
     {
-        return view('perizinan.verifikasi', ["title" => "Verifikasi Izin", "active" => "kelembagaan", 'posts' => Kelembagaan::all(), "heroes" => Hero::all(), "services" => Services::all(), "links" => Link::all(), "linkskm" => Linkskm::all(), "folders" => Folder::limit(6)->get()]);
+        return view('perizinan.verifikasi', ["title" => "Verifikasi Tanda Tangan", "active" => "kelembagaan", 'posts' => Kelembagaan::all(), "heroes" => Hero::all(), "services" => Services::all(), "links" => Link::all(), "linkskm" => Linkskm::all(), "folders" => Folder::limit(6)->get()]);
     }
 }

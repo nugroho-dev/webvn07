@@ -34,6 +34,7 @@ class ContentSecurityPolicy
             "script-src 'self' 'nonce-{$nonce}'",
             "style-src 'self' 'nonce-{$nonce}'",
             "img-src 'self' data:",
+            "frame-src https://verifikasipdf.rootca.id/",
         ]));
 
         return $response;

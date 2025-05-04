@@ -4,7 +4,7 @@
 
       <!--<h1 class="logo me-auto"><a href="index.html">DPMPTSP</a></h1>
      Uncomment below if you prefer to use an image logo -->
-       <a href="index.html" class="logo me-auto"><img src="/assets/img/logo.png" alt="" class="img-fluid"></a>
+       <a href="#" class="logo me-auto"><img src="/assets/img/logo.png" alt="" class="img-fluid"></a>
 
       <nav id="navbar" class="navbar">
         <ul>
@@ -48,7 +48,7 @@
                   
 		  <li><a href="https://dpmptsp.magelangkota.go.id/posts/jadwal-pelayanan-dpmptsp-kota-magelang" >Jam Pelayanan</a></li>
                   <li><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class="{{ Request::is('tracking*')?'active':'' }}">Tracking Permohonan</a></li>
-                <li><a href="/perizinan/verifikasi" class="{{ Request::is('perizinan/verifikasi*')?'active':'' }}">Verifikasi Izin</a></li>
+                <li><a href="/perizinan/verifikasi" class="{{ Request::is('perizinan/verifikasi*')?'active':'' }}">Verifikasi Tanda Tangan</a></li>
 		<li class="dropdown"><a href="#">Layanan Aplikasi<i class="bi bi-chevron-right"></i></a>
                   <ul>
                      @foreach($links as $link)

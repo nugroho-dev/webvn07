@@ -2,6 +2,27 @@
 
 @section('container')
 @extends('layouts.breadcrumb')
+<style nonce="{{ $cspNonce }}">
+  .table th {
+      width: 25%;
+      background-color: #f8f9fa;
+      vertical-align: top;
+      font-size: 0.875rem;
+      padding: 0.5rem;
+    }
+    .table td {
+      vertical-align: top;
+      font-size: 0.875rem;
+      padding: 0.5rem;
+    }
+    .table tr:last-child td, .table tr:last-child th {
+      border-bottom: none;
+    }
+    img.profile-img {
+      width: 100px;
+      border-radius: 0.5rem;
+    }
+</style>
 <section id="features" class="features blog">
   <div class="container">
 
@@ -21,289 +42,175 @@
     </div>
     
     <div class="row " >
-      <div class="col-lg-3 ">
-        <div class=" overflow-auto"  style="height: 55%">
-        <ul class="nav nav-tabs flex-column text-capitalize" >
-          <li class="nav-item">
-            <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">Dasar hukum</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" href="#tab-2">Persyaratan</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" href="#tab-3">Sistem, mekanisme, dan prosedur</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" href="#tab-4">Jangka waktu pelayanan</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" href="#tab-5">Biaya/tarif</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" href="#tab-6">Produk pelayanan</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" href="#tab-7">Sarana dan prasarana, dan/atau fasilitas</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" href="#tab-8">Kompetensi pelaksana</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" href="#tab-9">Pengawasan internal</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" href="#tab-10">Penanganan pengaduan, saran, dan masukan</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" href="#tab-11">Jumlah pelaksana</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" href="#tab-12">Jaminan pelayanan</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" href="#tab-13">Jaminan keamanan dan keselamatan pelayanan</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" href="#tab-14">Evaluasi kinerja pelaksana</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" href="#tab-15">Formulir</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" href="#tab-16">Standar Operasional Prosedur</a>
-          </li>
-        </ul>
-      </div>
-      </div>
-      <div class="col-lg-9 mt-4 mt-lg-0">
-        <div class="tab-content">
-          <div class="tab-pane active show " id="tab-1">
-            <div class="row">
-              <div class="col-lg-8 details order-2 order-lg-1">
+      <div class="table-responsive col-lg-12 col-md-12 col-sm-12 mb-3">
+        <table class="table table-sm">
+          <tbody>
+            <tr>
+              <th>Dasar hukum</th>
+              <td>
                 @if($izin->hukum)
                 {!! $izin->hukum !!}
                 @else
                 <h3 class="text-capitalize">informasi belum tersedia</h3>
                 @endif
-              </div>
-              <div class="col-lg-4 text-center order-1 order-lg-2">
-                <img src="/assets/img/features-{{ mt_rand(1, 7)}}.png" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane" id="tab-2">
-            <div class="row">
-              <div class="col-lg-8 details order-2 order-lg-1">
+              </td>
+            </tr>
+            <tr>
+              <th>Persyaratan</th>
+              <td>
                 @if($izin->persyaratan)
                 {!! $izin->persyaratan !!}
                 @else
-                <h3 class="text-capitalize">informasi belum tersedia</h3>
+                <p class="text-capitalize">informasi belum tersedia</p>
                 @endif
-              </div>
-              <div class="col-lg-4 text-center order-1 order-lg-2">
-                <img src="/assets/img/features-{{ mt_rand(1, 7)}}.png" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane" id="tab-3">
-            <div class="row">
-              <div class="col-lg-8 details order-2 order-lg-1">
+              </td>
+            </tr>
+            <tr>
+              <th>Sistem, mekanisme, dan prosedur</th>
+              <td>
                 @if($izin->mekanisme)
                 {!! $izin->mekanisme !!}
                 @else
-                <h3 class="text-capitalize">informasi belum tersedia</h3>
+                <p class="text-capitalize">informasi belum tersedia</p>
                 @endif
-              </div>
-              <div class="col-lg-4 text-center order-1 order-lg-2">
-                <img src="/assets/img/features-{{ mt_rand(1, 7)}}.png" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane" id="tab-4">
-            <div class="row">
-              <div class="col-lg-8 details order-2 order-lg-1">
+              
+              </td>
+            </tr>
+            <tr>
+              <th>Jangka waktu pelayanan</th>
+              <td>
                 @if($izin->waktu)
                 {!! $izin->waktu !!}
                 @else
                 <h3 class="text-capitalize">informasi belum tersedia</h3>
                 @endif
-              </div>
-              <div class="col-lg-4 text-center order-1 order-lg-2">
-                <img src="/assets/img/features-{{ mt_rand(1, 7)}}.png" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane" id="tab-5">
-            <div class="row">
-              <div class="col-lg-8 details order-2 order-lg-1">
+              </td>
+            </tr>
+            <tr>
+              <th>Biaya/tarif</th>
+              <td>
                 @if($izin->biaya)
                 {!! $izin->biaya !!}
                 @else
                 <h3 class="text-capitalize">informasi belum tersedia</h3>
                 @endif
-              </div>
-              <div class="col-lg-4 text-center order-1 order-lg-2">
-                <img src="/assets/img/features-{{ mt_rand(1, 7)}}.png" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane" id="tab-6">
-            <div class="row">
-              <div class="col-lg-8 details order-2 order-lg-1">
+              </td>
+            </tr>
+            <tr>
+              <th>Produk pelayanan</th>
+              <td>
                 @if($izin->produk)
                 {!! $izin->produk !!}
                 @else
-                <h3 class="text-capitalize">informasi belum tersedia</h3>
+                <p class="text-capitalize">informasi belum tersedia</p>
                 @endif
-              </div>
-              <div class="col-lg-4 text-center order-1 order-lg-2">
-                <img src="/assets/img/features-{{ mt_rand(1, 7)}}.png" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane" id="tab-7">
-            <div class="row">
-              <div class="col-lg-8 details order-2 order-lg-1">
+              </td>
+            </tr>
+            <tr>
+              <th>Sarana dan prasarana, dan/atau fasilitas</th>
+              <td>
                 @if($izin->sarana)
                 {!! $izin->sarana !!}
                 @else
-                <h3 class="text-capitalize">informasi belum tersedia</h3>
+                <p class="text-capitalize">informasi belum tersedia</p>
                 @endif
-              </div>
-              <div class="col-lg-4 text-center order-1 order-lg-2">
-                <img src="/assets/img/features-{{ mt_rand(1, 7)}}.png" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane" id="tab-8">
-            <div class="row">
-              <div class="col-lg-8 details order-2 order-lg-1">
+              </td>
+            </tr>
+            <tr>
+              <th>Kompetensi pelaksana</th>
+              <td>
                 @if($izin->kompetensi)
                 {!! $izin->kompetensi !!}
                 @else
-                <h3 class="text-capitalize">informasi belum tersedia</h3>
+                <p class="text-capitalize">informasi belum tersedia</p>
                 @endif
-              </div>
-              <div class="col-lg-4 text-center order-1 order-lg-2">
-                <img src="/assets/img/features-{{ mt_rand(1, 7)}}.png" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane" id="tab-9">
-            <div class="row">
-              <div class="col-lg-8 details order-2 order-lg-1">
+              </td>
+            </tr>
+            <tr>
+              <th>Pengawasan internal</th>
+              <td>
                 @if($izin->pengawasan)
                 {!! $izin->pengawasan !!}
                 @else
-                <h3 class="text-capitalize">informasi belum tersedia</h3>
+                <p class="text-capitalize">informasi belum tersedia</p>
                 @endif
-              </div>
-              <div class="col-lg-4 text-center order-1 order-lg-2">
-                <img src="/assets/img/features-{{ mt_rand(1, 7)}}.png" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane" id="tab-10">
-            <div class="row">
-              <div class="col-lg-8 details order-2 order-lg-1">
+              </td>
+            </tr>
+            <tr>
+              <th>Penanganan pengaduan, saran, dan masukan</th>
+              <td>
                 @if($izin->pengaduan)
                 {!! $izin->pengaduan !!}
                 @else
-                <h3 class="text-capitalize">informasi belum tersedia</h3>
+                <p class="text-capitalize">informasi belum tersedia</p>
                 @endif
-              </div>
-              <div class="col-lg-4 text-center order-1 order-lg-2">
-                <img src="/assets/img/features-{{ mt_rand(1, 7)}}.png" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane" id="tab-11">
-            <div class="row">
-              <div class="col-lg-8 details order-2 order-lg-1">
+              </td>
+            </tr>
+            <tr>
+              <th>Jumlah pelaksana</th>
+              <td>
                 @if($izin->pelaksana)
                 {!! $izin->pelaksana !!}
                 @else
-                <h3 class="text-capitalize">informasi belum tersedia</h3>
+                <p class="text-capitalize">informasi belum tersedia</p>
                 @endif
-              </div>
-              <div class="col-lg-4 text-center order-1 order-lg-2">
-                <img src="/assets/img/features-{{ mt_rand(1, 7)}}.png" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane" id="tab-12">
-            <div class="row">
-              <div class="col-lg-8 details order-2 order-lg-1">
+              </td>
+            </tr>
+            <tr>
+              <th>Jaminan pelayanan</th>
+              <td>
                 @if($izin->jaminan)
                 {!! $izin->jaminan !!}
                 @else
-                <h3 class="text-capitalize">informasi belum tersedia</h3>
+                <p class="text-capitalize">informasi belum tersedia</p>
                 @endif
-              </div>
-              <div class="col-lg-4 text-center order-1 order-lg-2">
-                <img src="/assets/img/features-{{ mt_rand(1, 7)}}.png" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane" id="tab-13">
-            <div class="row">
-              <div class="col-lg-8 details order-2 order-lg-1">
+              </td>
+            </tr>
+            <tr>
+              <th>Jaminan keamanan dan keselamatan pelayanan</th>
+              <td>
                 @if($izin->keamanan)
                 {!! $izin->keamanan !!}
                 @else
-                <h3 class="text-capitalize">informasi belum tersedia</h3>
+                <p class="text-capitalize">informasi belum tersedia</p>
                 @endif
-              </div>
-              <div class="col-lg-4 text-center order-1 order-lg-2">
-                <img src="/assets/img/features-{{ mt_rand(1, 7)}}.png" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane" id="tab-14">
-            <div class="row">
-              <div class="col-lg-8 details order-2 order-lg-1">
+              </td>
+            </tr>
+            <tr>
+              <th>Evaluasi kinerja pelaksana</th>
+              <td>  
                 @if($izin->kinerja)
                 {!! $izin->kinerja !!}
                 @else
-                <h3 class="text-capitalize">informasi belum tersedia</h3>
+                <p class="text-capitalize">informasi belum tersedia</p>
                 @endif
-              </div>
-              <div class="col-lg-4 text-center order-1 order-lg-2">
-                <img src="/assets/img/features-{{ mt_rand(1, 7)}}.png" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane" id="tab-15">
-            <div class="row">
-              <div class="col-lg-8 details order-2 order-lg-1">
+              </td>
+            </tr>
+            <tr>
+              <th>Formulir</th>
+              <td>
                 @if($izin->formulir)
                 {!! $izin->formulir !!}
                 @else
-                <h3 class="text-capitalize">informasi belum tersedia</h3>
+                <p class="text-capitalize">informasi belum tersedia</p>
                 @endif
-              </div>
-              <div class="col-lg-4 text-center order-1 order-lg-2">
-                <img src="/assets/img/features-{{ mt_rand(1, 7)}}.png" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane" id="tab-16">
-            <div class="row">
-              <div class="col-lg-8 details order-2 order-lg-1">
+              </td>
+            </tr>
+            <tr>
+              <th>Standar Operasional Prosedur</th>
+              <td>
                 @if($izin->sop)
                 {!! $izin->sop !!}
                 @else
-                <h3 class="text-capitalize">informasi belum tersedia</h3>
+                <p class="text-capitalize">informasi belum tersedia</p>
                 @endif
-              </div>
-              <div class="col-lg-4 text-center order-1 order-lg-2">
-                <img src="/assets/img/features-{{ mt_rand(1, 7)}}.png" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div>
-
-        </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+    </div>
+      
     </div>
 
   </div>
