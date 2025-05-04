@@ -22,7 +22,32 @@
       width: 100px;
       border-radius: 0.5rem;
     }
+    /* Hanya tampilkan tabel saat print */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #print-area, #print-area * {
+        visibility: visible;
+      }
+      #print-area {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+      }
+    }
 </style>
+<script nonce="{{ $cspNonce }}">
+  document.addEventListener('DOMContentLoaded', function () {
+    const btn = document.getElementById('btnPrint');
+    if (btn) {
+      btn.addEventListener('click', function () {
+        window.print();
+      });
+    }
+  });
+</script>
 <section id="features" class="features blog">
   <div class="container">
 
@@ -30,21 +55,31 @@
       
       <div class="row justify-content-between ">
       <div class="col-lg-8 col-sm-12">
-      <h2>sp & sop</h2>
-      <h5 class="h5 text-uppercase">{{ $izin->title }}</h5>
+    
       </div>
       <div class="entry-content col-lg-4 col-sm-12">
       <div class="read-more text-capitalize fs-5 ">
         <a href="/spsop" ><i class="bi bi-arrow-left-circle-fill"></i> Kembali</a>
+        <button id="btnPrint" class="btn btn-sm btn-outline-secondary">🖨 Cetak</button>
         </div>
       </div>
     </div>
     </div>
     
-    <div class="row " >
+    <div id="print-area" class="row" >
       <div class="table-responsive col-lg-12 col-md-12 col-sm-12 mb-3">
         <table class="table table-sm">
           <tbody>
+            <tr>
+              <th>Jenis Layanan</th>
+              <td>
+                @if( $izin->title )
+                {!!  $izin->title !!}
+                @else
+                <p class="text-capitalize">informasi belum tersedia</p>
+                @endif
+              </td>
+            </tr>
             <tr>
               <th>Dasar hukum</th>
               <td>
