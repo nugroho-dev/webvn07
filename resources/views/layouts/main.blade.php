@@ -51,7 +51,7 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 
-<!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-248554352-1"  nonce="{{ $cspNonce }}"></script>
 <script  nonce="{{ $cspNonce }}">
   window.dataLayer = window.dataLayer || [];
@@ -60,7 +60,7 @@
 
   gtag('config', 'UA-248554352-1');
 </script>
-
+-->
 </head>
 
 <body>

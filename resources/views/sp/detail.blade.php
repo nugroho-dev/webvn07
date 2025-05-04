@@ -74,204 +74,115 @@
 </script>
 <section id="features" class="features blog">
   <div class="container">
-
     <div class="section-title entry mb-4 mt-0">
-      
-      <div class="row justify-content-between ">
-      <div class="col-lg-8 col-sm-12">
-    
-      </div>
-      <div class="entry-content col-lg-4 col-sm-12">
-      <div class="read-more text-capitalize fs-5 ">
-        <a href="/spsop" ><i class="bi bi-arrow-left-circle-fill"></i> Kembali</a>
-        <button id="btnPrint" class="btn btn-sm btn-outline-secondary">🖨 Cetak</button>
+      <div class="row justify-content-between">
+        <div class="col-lg-8 col-sm-12"></div>
+        <div class="entry-content col-lg-12 col-sm-12">
+          <div class="text-end text-capitalize fs-5">
+            @if($izin->categoriesps->slug == 'pengaduan')
+              
+                <button class="btn btn-danger  dropdown-toggle dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-file-earmark-richtext-fill"></i> Buat Aduan
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="https://www.lapor.go.id/" target="_blank"><i class="bi bi-flag-fill"></i> SP4N Lapor</a></li>
+                  <li><a class="dropdown-item" href="https://lapor.magelangkota.go.id/"><i class="bi bi-flag"></i> Monggo lapor</a></li>
+                  <li><a class="dropdown-item" href="https://www.instagram.com/dpmptsp_mglkota/"><i class="bi bi-instagram"></i> DM Via Instagram</a></li>
+                  <li><a class="dropdown-item" href="https://www.facebook.com/dpmptspmagelang/"><i class="bi bi-facebook"></i> DM Via Facebook</a></li>
+                  <li><a class="dropdown-item" href="https://twitter.com/dpmptspmglkota"><i class="bi bi-twitter"></i> DM Via X</a></li>
+                  <li><a class="dropdown-item" href="https://wa.me/6285799996000?text=Saya%20ingin%20mengadu%20tentang%20:%20"><i class="bi bi-whatsapp"></i> DM Via WhatsApp</a></li>
+                  <li><a class="dropdown-item" href="mailto:dpmptspmglkota@gmail.com"><i class="bi bi-envelope"></i> Email</a></li>
+                  <li><a class="dropdown-item" href="tel:0293314663"><i class="bi bi-telephone-outbound"></i> Telepon</a></li>
+                </ul>
+              
+            @else
+              <a   href="{{ $izin->categoriesps->slug == 'online-single-submission' ? 'https://oss.go.id/' : ($izin->categoriesps->slug == 'izin-sicantik' ? 'https://sicantik.go.id/sign-in' : ($izin->categoriesps->slug == 'persetujuan-gedung-bangunan' ? 'https://simbg.pu.go.id/' : '')) }}" target="_blank" class="btn btn-danger">
+                <i class="bi bi-file-earmark-richtext-fill"></i> Ajukan Permohonan
+              </a>
+            @endif
+            <a href="#" id="btnPrint" class="btn btn-danger"><i class="bi bi-printer-fill"></i> Cetak</a>
+            <a href="/spsop" class="btn btn-danger"><i class="bi bi-arrow-left-circle-fill"></i> Kembali</a>
+          </div>
         </div>
       </div>
     </div>
-    </div>
-    
-    <div id="print-area" class="row" >
+    <div id="print-area" class="row">
       <div class="table-responsive col-lg-12 col-md-12 col-sm-12 mb-3">
         <table class="table table-sm">
           <tbody>
             <tr>
               <th>Jenis Layanan</th>
-              <td>
-                @if( $izin->title )
-                {!!  $izin->title !!}
-                @else
-                <p class="text-capitalize">informasi belum tersedia</p>
-                @endif
-              </td>
+              <td>{!! $izin->title ?? '<p class="text-capitalize">informasi belum tersedia</p>' !!}</td>
             </tr>
             <tr>
               <th>Dasar hukum</th>
-              <td>
-                @if($izin->hukum)
-                {!! $izin->hukum !!}
-                @else
-                <h3 class="text-capitalize">informasi belum tersedia</h3>
-                @endif
-              </td>
+              <td>{!! $izin->hukum ?? '<h3 class="text-capitalize">informasi belum tersedia</h3>' !!}</td>
             </tr>
             <tr>
               <th>Persyaratan</th>
-              <td>
-                @if($izin->persyaratan)
-                {!! $izin->persyaratan !!}
-                @else
-                <p class="text-capitalize">informasi belum tersedia</p>
-                @endif
-              </td>
+              <td>{!! $izin->persyaratan ?? '<p class="text-capitalize">informasi belum tersedia</p>' !!}</td>
             </tr>
             <tr>
               <th>Sistem, mekanisme, dan prosedur</th>
-              <td>
-                @if($izin->mekanisme)
-                <div class="gallery">{!! $izin->mekanisme !!}</div>
-                @else
-                <p class="text-capitalize">informasi belum tersedia</p>
-                @endif
-              
-              </td>
+              <td>{!! $izin->mekanisme ? '<div class="gallery">' . $izin->mekanisme . '</div>' : '<p class="text-capitalize">informasi belum tersedia</p>' !!}</td>
             </tr>
             <tr>
               <th>Jangka waktu pelayanan</th>
-              <td>
-                @if($izin->waktu)
-                {!! $izin->waktu !!}
-                @else
-                <h3 class="text-capitalize">informasi belum tersedia</h3>
-                @endif
-              </td>
+              <td>{!! $izin->waktu ?? '<h3 class="text-capitalize">informasi belum tersedia</h3>' !!}</td>
             </tr>
             <tr>
               <th>Biaya/tarif</th>
-              <td>
-                @if($izin->biaya)
-                {!! $izin->biaya !!}
-                @else
-                <h3 class="text-capitalize">informasi belum tersedia</h3>
-                @endif
-              </td>
+              <td>{!! $izin->biaya ?? '<h3 class="text-capitalize">informasi belum tersedia</h3>' !!}</td>
             </tr>
             <tr>
               <th>Produk pelayanan</th>
-              <td>
-                @if($izin->produk)
-                {!! $izin->produk !!}
-                @else
-                <p class="text-capitalize">informasi belum tersedia</p>
-                @endif
-              </td>
+              <td>{!! $izin->produk ?? '<p class="text-capitalize">informasi belum tersedia</p>' !!}</td>
             </tr>
             <tr>
               <th>Sarana dan prasarana, dan/atau fasilitas</th>
-              <td>
-                @if($izin->sarana)
-                {!! $izin->sarana !!}
-                @else
-                <p class="text-capitalize">informasi belum tersedia</p>
-                @endif
-              </td>
+              <td>{!! $izin->sarana ?? '<p class="text-capitalize">informasi belum tersedia</p>' !!}</td>
             </tr>
             <tr>
               <th>Kompetensi pelaksana</th>
-              <td>
-                @if($izin->kompetensi)
-                {!! $izin->kompetensi !!}
-                @else
-                <p class="text-capitalize">informasi belum tersedia</p>
-                @endif
-              </td>
+              <td>{!! $izin->kompetensi ?? '<p class="text-capitalize">informasi belum tersedia</p>' !!}</td>
             </tr>
             <tr>
               <th>Pengawasan internal</th>
-              <td>
-                @if($izin->pengawasan)
-                {!! $izin->pengawasan !!}
-                @else
-                <p class="text-capitalize">informasi belum tersedia</p>
-                @endif
-              </td>
+              <td>{!! $izin->pengawasan ?? '<p class="text-capitalize">informasi belum tersedia</p>' !!}</td>
             </tr>
             <tr>
               <th>Penanganan pengaduan, saran, dan masukan</th>
-              <td>
-                @if($izin->pengaduan)
-                {!! $izin->pengaduan !!}
-                @else
-                <p class="text-capitalize">informasi belum tersedia</p>
-                @endif
-              </td>
+              <td>{!! $izin->pengaduan ?? '<p class="text-capitalize">informasi belum tersedia</p>' !!}</td>
             </tr>
             <tr>
               <th>Jumlah pelaksana</th>
-              <td>
-                @if($izin->pelaksana)
-                {!! $izin->pelaksana !!}
-                @else
-                <p class="text-capitalize">informasi belum tersedia</p>
-                @endif
-              </td>
+              <td>{!! $izin->pelaksana ?? '<p class="text-capitalize">informasi belum tersedia</p>' !!}</td>
             </tr>
             <tr>
               <th>Jaminan pelayanan</th>
-              <td>
-                @if($izin->jaminan)
-                {!! $izin->jaminan !!}
-                @else
-                <p class="text-capitalize">informasi belum tersedia</p>
-                @endif
-              </td>
+              <td>{!! $izin->jaminan ?? '<p class="text-capitalize">informasi belum tersedia</p>' !!}</td>
             </tr>
             <tr>
               <th>Jaminan keamanan dan keselamatan pelayanan</th>
-              <td>
-                @if($izin->keamanan)
-                {!! $izin->keamanan !!}
-                @else
-                <p class="text-capitalize">informasi belum tersedia</p>
-                @endif
-              </td>
+              <td>{!! $izin->keamanan ?? '<p class="text-capitalize">informasi belum tersedia</p>' !!}</td>
             </tr>
             <tr>
               <th>Evaluasi kinerja pelaksana</th>
-              <td>  
-                @if($izin->kinerja)
-                {!! $izin->kinerja !!}
-                @else
-                <p class="text-capitalize">informasi belum tersedia</p>
-                @endif
-              </td>
+              <td>{!! $izin->kinerja ?? '<p class="text-capitalize">informasi belum tersedia</p>' !!}</td>
             </tr>
             <tr>
               <th>Formulir</th>
-              <td>
-                @if($izin->formulir)
-                {!! $izin->formulir !!}
-                @else
-                <p class="text-capitalize">informasi belum tersedia</p>
-                @endif
-              </td>
+              <td>{!! $izin->formulir ?? '<p class="text-capitalize">informasi belum tersedia</p>' !!}</td>
             </tr>
             <tr>
               <th>Standar Operasional Prosedur</th>
-              <td>
-                @if($izin->sop)
-                {!! $izin->sop !!}
-                @else
-                <p class="text-capitalize">informasi belum tersedia</p>
-                @endif
-              </td>
+              <td>{!! $izin->sop ?? '<p class="text-capitalize">informasi belum tersedia</p>' !!}</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
-      
-    </div>
 
   </div>
-</section><!-- End Features Section -->
+</section>
 @endsection
