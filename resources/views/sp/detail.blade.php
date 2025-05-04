@@ -104,7 +104,7 @@
               <th>Sistem, mekanisme, dan prosedur</th>
               <td>
                 @if($izin->mekanisme)
-                {!! $izin->mekanisme !!}
+                <div class="profile-img">{!! $izin->mekanisme !!}</div>
                 @else
                 <p class="text-capitalize">informasi belum tersedia</p>
                 @endif
