@@ -31,7 +31,7 @@
       border: 1px solid #ccc;
       border-radius: 8px;
       overflow: hidden;
-      width: 50%;
+      width: 100%;
       background-color: #fff;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
