@@ -89,7 +89,7 @@
         <table class="table table-hover">
           <thead>
             <tr>
-              <th scope="col">Jenis Izin</th>
+              <th scope="col">Layanan</th>
               <th scope="col">Waktu Penyelesaian</th>
               <th scope="col">Biaya</th>
               <th scope="col">Persyaratan</th>
