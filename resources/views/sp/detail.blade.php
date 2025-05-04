@@ -101,7 +101,7 @@
               </a>
             @endif
             <a href="#" id="btnPrint" class="btn btn-danger mt-2"><i class="bi bi-printer-fill"></i> Cetak</a>
-            <a href="/spsop" class="btn btn-danger m-2"><i class="bi bi-arrow-left-circle-fill"></i> Kembali</a>
+            <a href="/spsop" class="btn btn-danger mt-2"><i class="bi bi-arrow-left-circle-fill"></i> Kembali</a>
           </div>
         </div>
       </div>
