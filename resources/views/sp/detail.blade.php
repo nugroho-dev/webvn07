@@ -18,15 +18,33 @@
     .table tr:last-child td, .table tr:last-child th {
       border-bottom: none;
     }
-  div.gallery {
-    margin: 5px;
-    border: 1px solid #ccc;
-    float: left;
-    width: 180px;
+    * {
+      box-sizing: border-box;
     }
-  div.gallery img {
+    .gallery-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+  .gallery {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+      width: 180px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .gallery:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      border-color: #888;
+    }
+  .gallery img {
     width: 100%;
     height: auto;
+    display: block;
     }
     /* Hanya tampilkan tabel saat print */
     @media print {
