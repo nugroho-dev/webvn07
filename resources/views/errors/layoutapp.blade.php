@@ -53,7 +53,7 @@
     <div class="error-container">
         <div class="error-box">
             @yield('content')
-            <a href="{{ url('/') }}" class="btn btn-danger mt-4">Kembali ke Beranda</a>
+            
         </div>
     </div>
 </body>

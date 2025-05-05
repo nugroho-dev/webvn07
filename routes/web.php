@@ -40,7 +40,7 @@ use App\Http\Controllers\DashboardPostsController;
 use App\Http\Controllers\DashboardFolderController;
 use App\Http\Controllers\DashboardLinkSkmController;
 use App\Http\Controllers\DashboardServiceController;
-use App\Http\Controllers\LaporanPengaduanController;
+//use App\Http\Controllers\LaporanPengaduanController;
 use App\Http\Controllers\DashboardMaklumatController;
 use App\Http\Controllers\DashboardPrestasiController;
 use App\Http\Controllers\DashboardSpDetailController;
@@ -64,7 +64,7 @@ use App\Http\Controllers\DashboardAduanController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::middleware(['throttle:public-web'])->group(function () {
 Route::get('/',  [BerandaController::class, 'index']);
 Route::get('/berita', [PostController::class, 'berita']);
 Route::get('/apipost', [ApiPostController::class, 'index']);
@@ -99,8 +99,9 @@ Route::get('/pengaduan/alur', [AlurPengaduanController::class, 'index']);
 Route::get('/pengaduan/form', [FormPengaduanController::class, 'index']);
 Route::post('/pengaduan/form', [FormPengaduanController::class, 'store']);
 Route::get('/reload-captcha', [FormPengaduanController::class, 'reloadCaptcha']);
-Route::get('/pengaduan/laporan', [LaporanPengaduanController::class, 'index']);
+//Route::get('/pengaduan/laporan', [LaporanPengaduanController::class, 'index']);
 Route::get('/faq', [FaqController::class, 'index']);
+});
 //Route::get('/arep/mlebu/le', [LoginController::class, 'index'])->name('login')->middleware('guest');
 //Route::post('/arep/mlebu/le', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);

@@ -8,4 +8,5 @@
     <p class="error-message text-muted">
         Sesi Anda telah berakhir. Silakan refresh dan coba lagi.
     </p>
+    <a href="{{ url('/') }}" class="btn btn-danger mt-4">Kembali ke Beranda</a>
 @endsection

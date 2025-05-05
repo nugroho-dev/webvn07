@@ -8,4 +8,5 @@
     <p class="error-message text-muted">
         Anda tidak memiliki izin untuk mengakses halaman ini.
     </p>
+    <a href="{{ url('/') }}" class="btn btn-danger mt-4">Kembali ke Beranda</a>
 @endsection

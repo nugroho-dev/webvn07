@@ -8,5 +8,6 @@
     <p class="error-message text-muted">
         Maaf, halaman yang Anda cari tidak tersedia atau telah dipindahkan.
     </p>
+    <a href="{{ url('/') }}" class="btn btn-danger mt-4">Kembali ke Beranda</a>
 @endsection
 
