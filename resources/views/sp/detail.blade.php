@@ -96,8 +96,8 @@
                 </ul>
               
             @else
-              <a   href="{{ $izin->categoriesps->slug == 'online-single-submission' ? 'https://oss.go.id/' : ($izin->categoriesps->slug == 'izin-sicantik' ? 'https://sicantik.go.id/sign-in' : ($izin->categoriesps->slug == 'persetujuan-gedung-bangunan' ? 'https://simbg.pu.go.id/' : '')) }}" target="_blank" class="btn btn-danger">
-                <i class="bi bi-file-earmark-richtext-fill mt-2"></i> Ajukan Permohonan
+              <a   href="{{ $izin->categoriesps->slug == 'online-single-submission' ? 'https://oss.go.id/' : ($izin->categoriesps->slug == 'izin-sicantik' ? 'https://sicantik.go.id/sign-in' : ($izin->categoriesps->slug == 'persetujuan-gedung-bangunan' ? 'https://simbg.pu.go.id/' : '')) }}" target="_blank" class="btn btn-danger mt-2">
+                <i class="bi bi-file-earmark-richtext-fill "></i> Ajukan Permohonan
               </a>
             @endif
             <a href="#" id="btnPrint" class="btn btn-danger mt-2"><i class="bi bi-printer-fill"></i> Cetak</a>
