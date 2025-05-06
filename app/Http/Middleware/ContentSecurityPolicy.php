@@ -31,6 +31,7 @@ class ContentSecurityPolicy
         $response = $next($request);
         $response->headers->set('Content-Security-Policy', implode('; ', [
             "default-src 'none'",
+            "font-src 'self'",
             "script-src 'self' 'nonce-{$nonce}'",
             "style-src 'self' 'nonce-{$nonce}'",
             "img-src 'self' data:",
