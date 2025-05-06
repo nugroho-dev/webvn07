@@ -17,7 +17,7 @@ class FrameOptionsMiddleware
     {
         $response = $next($request);
         // Blok semua iframe
-        $response->headers->set('X-Frame-Options', 'DENY');
+        //$response->headers->set('X-Frame-Options', 'DENY');
 
         // Atau hanya izinkan iframe dari domain tertentu
         // $response->headers->set('X-Frame-Options', 'ALLOW-FROM https://yourdomain.com');
