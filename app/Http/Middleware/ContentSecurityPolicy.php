@@ -30,11 +30,13 @@ class ContentSecurityPolicy
         // Set CSP Header
         $response = $next($request);
         $response->headers->set('Content-Security-Policy', implode('; ', [
-            "default-src 'self'",
+            "default-src 'none'",
             "script-src 'self' 'nonce-{$nonce}'",
             "style-src 'self' 'nonce-{$nonce}'",
             "img-src 'self' data:",
             "frame-src https://verifikasipdf.rootca.id/",
+            "base-uri 'self'",
+            "form-action 'self'",
         ]));
 
         return $response;
