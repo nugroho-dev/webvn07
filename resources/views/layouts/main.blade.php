@@ -3,7 +3,7 @@
 <html lang="en">
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FQGV18Q2BT"  nonce="{{ $cspNonce }}"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FQGV18Q2BT" integrity="sha384-d5dWGqFb7saRq/jdcyeBwDvm6K0lpDkGhohGsnu+XfRKO1m5Ed6vejM0hMJ7sTSM" crossorigin="anonymous" nonce="{{ $cspNonce }}"></script>
 <script  nonce="{{ $cspNonce }}">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -185,10 +185,10 @@
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <!-- Vendor JS Files -->
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"  nonce="{{ $cspNonce }}">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"  integrity="sha384-vIQIPaHJRqkO8xhnLxSZ0rHF6LyiWXbLF3grsa9pv9yDFyOPGrE1teHOuRNMJoZs" crossorigin="anonymous" nonce="{{ $cspNonce }}">
 <link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-3.6.0.js"  nonce="{{ $cspNonce }}"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"  nonce="{{ $cspNonce }}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha384-S58meLBGKxIiQmJ/pJ8ilvFUcGcqgla+mWH9EEKGm6i6rKxSTA2kpXJQJ8n7XK4w" crossorigin="anonymous"></script> nonce="{{ $cspNonce }}"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha384-EZJUCwX9EfOmrML5/1WejmhFx/azi54nnVfOndPu+VTQKOHabXXC9eS7VFdkLz0V" crossorigin="anonymous" nonce="{{ $cspNonce }}"></script>
   <script  nonce="{{ $cspNonce }}">
   $( function() {
     
