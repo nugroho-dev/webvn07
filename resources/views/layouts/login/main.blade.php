@@ -13,7 +13,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Sign in - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
+    <title>@yield('title', config('app.name'))</title>
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="/tabler/dist/css/tabler.css?1744816591" rel="stylesheet" />
     <!-- END GLOBAL MANDATORY STYLES -->
