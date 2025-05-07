@@ -52,8 +52,9 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\DashboardAlurPengaduanController;
 use App\Http\Controllers\DashboardPostCategoriesController;
 use App\Http\Controllers\DashboardLaporanPengaduanController;
-use App\Http\Controllers\DashboardTahunLaporanPengaduanController;
+//use App\Http\Controllers\DashboardTahunLaporanPengaduanController;
 use App\Http\Controllers\DashboardAduanController;
+use App\Http\Middleware\VerifyRecaptcha;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -104,9 +105,12 @@ Route::get('/faq', [FaqController::class, 'index']);
 });
 //Route::get('/arep/mlebu/le', [LoginController::class, 'index'])->name('login')->middleware('guest');
 //Route::post('/arep/mlebu/le', [LoginController::class, 'authenticate']);
-Route::post('/logout', [LoginController::class, 'logout']);
-Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store']);
+//Route::post('/logout', [LoginController::class, 'logout']);
+//Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+//Route::post('/register', [RegisterController::class, 'store']);
+Route::post('/login', [\Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::class, 'store'])
+    ->middleware(['guest', 'throttle:login', \App\Http\Middleware\VerifyRecaptcha::class])
+    ->name('login');
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 Route::post('/dashboard', [DashboardController::class, 'viewanalytich'])->middleware('auth');;
 Route::get('/dashboard/posts/checkSlug', [DashboardPostsController::class, 'checkSlug'])->middleware('auth');
@@ -149,8 +153,8 @@ Route::get('/dashboard/perizinan/linkskm/checkSlug', [DashboardLinkSkmController
 Route::resource('/dashboard/perizinan/linkskm', DashboardLinkSkmController::class)->middleware('auth');
 Route::get('/dashboard/pengaduan/alur/checkSlug', [DashboardAlurPengaduanController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/pengaduan/alur', DashboardAlurPengaduanController::class)->middleware('auth');
-Route::get('/dashboard/pengaduan/laporan/checkSlug', [DashboardTahunLaporanPengaduanController::class, 'checkSlug'])->middleware('auth');
-Route::resource('/dashboard/pengaduan/laporan', DashboardTahunLaporanPengaduanController::class)->middleware('auth');
+//Route::get('/dashboard/pengaduan/laporan/checkSlug', [DashboardTahunLaporanPengaduanController::class, 'checkSlug'])->middleware('auth');
+//Route::resource('/dashboard/pengaduan/laporan', DashboardTahunLaporanPengaduanController::class)->middleware('auth');
 Route::resource('/dashboard/pengaduan/aduan', DashboardAduanController::class)->middleware('auth');
-Route::get('/dashboard/pengaduan/detail/laporan/checkSlug', [DashboardLaporanPengaduanController::class, 'checkSlug'])->middleware('auth');
-Route::resource('/dashboard/pengaduan/detail/laporan', DashboardLaporanPengaduanController::class)->middleware('auth');
+//Route::get('/dashboard/pengaduan/detail/laporan/checkSlug', [DashboardLaporanPengaduanController::class, 'checkSlug'])->middleware('auth');
+//Route::resource('/dashboard/pengaduan/detail/laporan', DashboardLaporanPengaduanController::class)->middleware('auth');
