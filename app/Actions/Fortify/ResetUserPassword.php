@@ -19,6 +19,8 @@ class ResetUserPassword implements ResetsUserPasswords
     public function reset(User $user, array $input): void
     {
         Validator::make($input, [
+            'token' => ['required'],
+            'email' => ['required', 'email'],
             'password' => $this->passwordRules(),
         ])->validate();
 

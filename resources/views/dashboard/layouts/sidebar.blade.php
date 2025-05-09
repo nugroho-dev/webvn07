@@ -35,7 +35,7 @@
     </div>
     <ul class="nav flex-column pt-3 pt-md-0">
       <li class="nav-item">
-        <a href="/dashboard" class="nav-link d-flex align-items-center m-0">
+        <a href="/home" class="nav-link d-flex align-items-center m-0">
           <span>
             <img src="/../../assets/img/favicon.png" height="25" width="20" alt="Volt Logo">
           </span>
@@ -57,7 +57,7 @@
           <div class="multi-level collapse " role="list" id="submenu-pages" aria-expanded="false">
           <ul class="flex-column nav">
             <li class="nav-item {{ Request::is('dashboard/beranda/hero*')?'active':'' }}">
-              <a class="nav-link" href="/dashboard/beranda/hero">
+              <a class="nav-link" href="/home/beranda/hero">
                 <span>
                   <span class="sidebar-icon">
                     <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z" clipRule="evenodd" /></svg>
@@ -68,7 +68,7 @@
               </a>
             </li>
             <li class="nav-item {{ Request::is('dashboard/beranda/link*')?'active':'' }}">
-              <a class="nav-link" href="/dashboard/beranda/link">
+              <a class="nav-link" href="/home/beranda/link">
                 <span>
                   <span class="sidebar-icon">
                     <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clipRule="evenodd" /></svg>
@@ -78,7 +78,7 @@
               </a>
             </li>
             <li class="nav-item {{ Request::is('dashboard/beranda/service*')?'active':'' }}">
-              <a class="nav-link" href="/dashboard/beranda/service">
+              <a class="nav-link" href="/home/beranda/service">
                 <span>
                   <span class="sidebar-icon">
                     <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-2 0c0 .993-.241 1.929-.668 2.754l-1.524-1.525a3.997 3.997 0 00.078-2.183l1.562-1.562C15.802 8.249 16 9.1 16 10zm-5.165 3.913l1.58 1.58A5.98 5.98 0 0110 16a5.976 5.976 0 01-2.516-.552l1.562-1.562a4.006 4.006 0 001.789.027zm-4.677-2.796a4.002 4.002 0 01-.041-2.08l-.08.08-1.53-1.533A5.98 5.98 0 004 10c0 .954.223 1.856.619 2.657l1.54-1.54zm1.088-6.45A5.974 5.974 0 0110 4c.954 0 1.856.223 2.657.619l-1.54 1.54a4.002 4.002 0 00-2.346.033L7.246 4.668zM12 10a2 2 0 11-4 0 2 2 0 014 0z" clipRule="evenodd" /></svg>
@@ -104,8 +104,8 @@
         </span>
         <div class="multi-level collapse " role="list" id="submenu-post" aria-expanded="false">
           <ul class="flex-column nav">
-            <li class="nav-item {{ Request::is('/dashboard/posts*')?'active':'' }}">
-              <a class="nav-link" href="/dashboard/posts">
+            <li class="nav-item {{ Request::is('/home/posts*')?'active':'' }}">
+              <a class="nav-link" href="/home/posts">
                 <span>
                   <span class="sidebar-icon">
                     <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
@@ -115,8 +115,8 @@
                 
               </a>
             </li>
-             <li class="nav-item {{ Request::is('/dashboard/post*')?'active':'' }}">
-              <a class="nav-link" href="/dashboard/category">
+             <li class="nav-item {{ Request::is('/home/post*')?'active':'' }}">
+              <a class="nav-link" href="/home/category">
                 <span>
                   <span class="sidebar-icon">
                     <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
@@ -145,7 +145,7 @@
         <div class="multi-level collapse " role="list" id="submenu-profile" aria-expanded="false">
           <ul class="flex-column nav">
             <li class="nav-item {{ Request::is('dashboard/profil/kelembagaan*')?'active':'' }}">
-              <a class="nav-link" href="/dashboard/profil/kelembagaan">
+              <a class="nav-link" href="/home/profil/kelembagaan">
                 <span>
                   <span class="sidebar-icon">
                     <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"></path><path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"></path></svg>
@@ -156,7 +156,7 @@
               </a>
             </li>
             <li class="nav-item {{ Request::is('dashboard/profil/visimisi*')?'active':'' }}">
-              <a class="nav-link" href="/dashboard/profil/visimisi">
+              <a class="nav-link" href="/home/profil/visimisi">
                 <span>
                   <span class="sidebar-icon">
                     <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm2 10a1 1 0 10-2 0v3a1 1 0 102 0v-3zm2-3a1 1 0 011 1v5a1 1 0 11-2 0v-5a1 1 0 011-1zm4-1a1 1 0 10-2 0v7a1 1 0 102 0V8z" clip-rule="evenodd"></path></svg>
@@ -166,7 +166,7 @@
               </a>
             </li>
             <li class="nav-item {{ Request::is('dashboard/profil/organisasi*')?'active':'' }}">
-              <a class="nav-link" href="/dashboard/profil/organisasi">
+              <a class="nav-link" href="/home/profil/organisasi">
                 <span>
                   <span class="sidebar-icon">
                     <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path></svg>
@@ -176,7 +176,7 @@
               </a>
             </li>
             <li class="nav-item {{ Request::is('dashboard/profil/prestasi*')?'active':'' }}">
-              <a class="nav-link" href="/dashboard/profil/prestasi">
+              <a class="nav-link" href="/home/profil/prestasi">
                 <span>
                   <span class="sidebar-icon">
                     <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z" clip-rule="evenodd"></path></svg>
@@ -186,7 +186,7 @@
               </a>
             </li>
             <li class="nav-item {{ Request::is('dashboard/profil/maklumat*')?'active':'' }}">
-              <a class="nav-link" href="/dashboard/profil/maklumat">
+              <a class="nav-link" href="/home/profil/maklumat">
                 <span>
                   <span class="sidebar-icon">
                     <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path></svg>
@@ -199,7 +199,7 @@
         </div>
       </li>
       <li class="nav-item {{ Request::is('dashboard/spsop*')?'active':'' }}">
-        <a href="/dashboard/spsop"  class="nav-link d-flex justify-content-between">
+        <a href="/home/spsop"  class="nav-link d-flex justify-content-between">
           <span>
             <span class="sidebar-icon">
               <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path></svg>
@@ -210,7 +210,7 @@
         </a>
       </li>
       <li class="nav-item {{ Request::is('dashboard/download*')?'active':'' }}">
-        <a href="/dashboard/download"  class="nav-link d-flex justify-content-between">
+        <a href="/home/download"  class="nav-link d-flex justify-content-between">
           <span>
             <span class="sidebar-icon">
               <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clip-rule="evenodd"></path></svg>
@@ -235,7 +235,7 @@
           <div class="multi-level collapse " role="list" id="submenu-perizinan" aria-expanded="false">
           <ul class="flex-column nav">
             <li class="nav-item {{ Request::is('dashboard/perizinan/alur*')?'active':'' }}">
-              <a class="nav-link" href="/dashboard/perizinan/alur">
+              <a class="nav-link" href="/home/perizinan/alur">
                 <span>
                   <span class="sidebar-icon">
                     <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clip-rule="evenodd"></path></svg>
@@ -246,7 +246,7 @@
               </a>
             </li>
             <li class="nav-item {{ Request::is('dashboard/perizinan/linkskm*')?'active':'' }}">
-              <a class="nav-link" href="/dashboard/perizinan/linkskm">
+              <a class="nav-link" href="/home/perizinan/linkskm">
                 <span>
                   <span class="sidebar-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon icon-sm">
@@ -263,7 +263,7 @@
           </div>
       </li>
       <li class="nav-item  {{ Request::is('dashboard/ppid*')?'active':'' }} ">
-        <a href="/dashboard/ppid"  class="nav-link d-flex justify-content-between">
+        <a href="/home/ppid"  class="nav-link d-flex justify-content-between">
           <span>
             <span class="sidebar-icon">
              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon icon-sm">
@@ -295,7 +295,7 @@
         <div class="multi-level collapse " role="list" id="submenu-pengaduan" aria-expanded="false">
           <ul class="flex-column nav">
             <li class="nav-item {{ Request::is('dashboard/pengaduan/aduan*')?'active':'' }}">
-              <a class="nav-link" href="/dashboard/pengaduan/aduan">
+              <a class="nav-link" href="/home/pengaduan/aduan">
                 <span>
                   <span class="sidebar-icon">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon icon-sm">
@@ -308,7 +308,7 @@
               </a>
             </li>
             <li class="nav-item {{ Request::is('dashboard/pengaduan/laporan*')?'active':'' }}">
-              <a class="nav-link" href="/dashboard/pengaduan/laporan">
+              <a class="nav-link" href="/home/pengaduan/laporan">
                 <span>
                   <span class="sidebar-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon icon-sm">
@@ -322,7 +322,7 @@
               </a>
             </li>
             <li class="nav-item {{ Request::is('dashboard/pengaduan/petugas*')?'active':'' }}">
-              <a class="nav-link" href="/dashboard/pengaduan/petugas">
+              <a class="nav-link" href="/home/pengaduan/petugas">
                 <span>
                   <span class="sidebar-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon icon-sm">
@@ -337,7 +337,7 @@
               </a>
             </li>
             <li class="nav-item {{ Request::is('dashboard/pengaduan/alur*')?'active':'' }}">
-              <a class="nav-link" href="/dashboard/pengaduan/alur">
+              <a class="nav-link" href="/home/pengaduan/alur">
                 <span>
                   <span class="sidebar-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon icon-sm">
@@ -354,7 +354,7 @@
           </div> 
       </li>
       <li class="nav-item  {{ Request::is('dashboard/faq*')?'active':'' }} ">
-        <a href="/dashboard/faq"  class="nav-link d-flex justify-content-between">
+        <a href="/home/faq"  class="nav-link d-flex justify-content-between">
           <span>
             <span class="sidebar-icon">
              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon icon-sm">

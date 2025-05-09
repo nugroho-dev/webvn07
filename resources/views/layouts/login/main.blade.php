@@ -315,6 +315,8 @@
     <script src="/tabler/preview/js/demo.min.js?1744816591" defer></script>
     <!-- END DEMO SCRIPTS -->
     <!-- BEGIN PAGE SCRIPTS -->
+    
+    
     <script nonce="{{ $cspNonce }}">
          document.addEventListener('DOMContentLoaded', function () {
         const toggle = document.getElementById('togglePassword');
