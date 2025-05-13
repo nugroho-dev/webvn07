@@ -32,7 +32,7 @@ class ContentSecurityPolicy
         $response->headers->set('Content-Security-Policy', implode('; ', [
             "default-src 'none'",
             "font-src 'self' https://rsms.me data:",
-            "script-src 'self' 'nonce-{$nonce}' https://code.jquery.com https://cdn2.woxo.tech https://platform.twitter.com/ http://www.instagram.com/",
+            "script-src 'self' 'nonce-{$nonce}' https://code.jquery.com https://cdn2.woxo.tech https://platform.twitter.com/ https://www.instagram.com/",
             "connect-src 'self' https://www.google-analytics.com https://analytics.google.com",
             "style-src 'self' 'unsafe-inline' https://rsms.me/ https://code.jquery.com",
             "img-src 'self' data: https://www.google-analytics.com https://www.google.co.id",
