@@ -42,7 +42,7 @@
           <span class="ms-2 sidebar-text"> DPMPTSP<br> </span>
         </a>
       </li>
-      <li class="nav-item  {{ Request::is('dashboard/beranda*')?'active':'' }} ">
+      <li class="nav-item  {{ Request::is('home/beranda*')?'active':'' }} ">
         <span class="nav-link  collapsed  d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#submenu-pages">
           <span>
           <span class="sidebar-icon">
@@ -56,7 +56,7 @@
         </span>
           <div class="multi-level collapse " role="list" id="submenu-pages" aria-expanded="false">
           <ul class="flex-column nav">
-            <li class="nav-item {{ Request::is('dashboard/beranda/hero*')?'active':'' }}">
+            <li class="nav-item {{ Request::is('home/beranda/hero*')?'active':'' }}">
               <a class="nav-link" href="/home/beranda/hero">
                 <span>
                   <span class="sidebar-icon">
@@ -67,7 +67,7 @@
                 
               </a>
             </li>
-            <li class="nav-item {{ Request::is('dashboard/beranda/link*')?'active':'' }}">
+            <li class="nav-item {{ Request::is('home/beranda/link*')?'active':'' }}">
               <a class="nav-link" href="/home/beranda/link">
                 <span>
                   <span class="sidebar-icon">
@@ -77,7 +77,7 @@
               </span>
               </a>
             </li>
-            <li class="nav-item {{ Request::is('dashboard/beranda/service*')?'active':'' }}">
+            <li class="nav-item {{ Request::is('home/beranda/service*')?'active':'' }}">
               <a class="nav-link" href="/home/beranda/service">
                 <span>
                   <span class="sidebar-icon">
@@ -90,7 +90,7 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item {{ Request::is('dashboard/posts*')?'active':'' }}">
+      <li class="nav-item {{ Request::is('home/posts*')?'active':'' }}">
          <span class="nav-link  collapsed  d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#submenu-post">
           <span>
           <span class="sidebar-icon">
@@ -130,7 +130,7 @@
         </div>
         
       </li>
-      <li class="nav-item  {{ Request::is('dashboard/profil*')?'active':'' }} ">
+      <li class="nav-item  {{ Request::is('home/profil*')?'active':'' }} ">
         <span class="nav-link  collapsed  d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#submenu-profile">
           <span>
           <span class="sidebar-icon">
@@ -144,7 +144,7 @@
         </span>
         <div class="multi-level collapse " role="list" id="submenu-profile" aria-expanded="false">
           <ul class="flex-column nav">
-            <li class="nav-item {{ Request::is('dashboard/profil/kelembagaan*')?'active':'' }}">
+            <li class="nav-item {{ Request::is('home/profil/kelembagaan*')?'active':'' }}">
               <a class="nav-link" href="/home/profil/kelembagaan">
                 <span>
                   <span class="sidebar-icon">
@@ -155,7 +155,7 @@
                 
               </a>
             </li>
-            <li class="nav-item {{ Request::is('dashboard/profil/visimisi*')?'active':'' }}">
+            <li class="nav-item {{ Request::is('home/profil/visimisi*')?'active':'' }}">
               <a class="nav-link" href="/home/profil/visimisi">
                 <span>
                   <span class="sidebar-icon">
@@ -165,7 +165,7 @@
               </span>
               </a>
             </li>
-            <li class="nav-item {{ Request::is('dashboard/profil/organisasi*')?'active':'' }}">
+            <li class="nav-item {{ Request::is('home/profil/organisasi*')?'active':'' }}">
               <a class="nav-link" href="/home/profil/organisasi">
                 <span>
                   <span class="sidebar-icon">
@@ -175,7 +175,7 @@
               </span>
               </a>
             </li>
-            <li class="nav-item {{ Request::is('dashboard/profil/prestasi*')?'active':'' }}">
+            <li class="nav-item {{ Request::is('home/profil/prestasi*')?'active':'' }}">
               <a class="nav-link" href="/home/profil/prestasi">
                 <span>
                   <span class="sidebar-icon">
@@ -185,7 +185,7 @@
               </span>
               </a>
             </li>
-            <li class="nav-item {{ Request::is('dashboard/profil/maklumat*')?'active':'' }}">
+            <li class="nav-item {{ Request::is('home/profil/maklumat*')?'active':'' }}">
               <a class="nav-link" href="/home/profil/maklumat">
                 <span>
                   <span class="sidebar-icon">
@@ -198,7 +198,7 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item {{ Request::is('dashboard/spsop*')?'active':'' }}">
+      <li class="nav-item {{ Request::is('home/spsop*')?'active':'' }}">
         <a href="/home/spsop"  class="nav-link d-flex justify-content-between">
           <span>
             <span class="sidebar-icon">
@@ -209,7 +209,7 @@
           
         </a>
       </li>
-      <li class="nav-item {{ Request::is('dashboard/download*')?'active':'' }}">
+      <li class="nav-item {{ Request::is('home/download*')?'active':'' }}">
         <a href="/home/download"  class="nav-link d-flex justify-content-between">
           <span>
             <span class="sidebar-icon">
@@ -220,7 +220,7 @@
           
         </a>
       </li>
-      <li class="nav-item  {{ Request::is('dashboard/perizinan*')?'active':'' }} ">
+      <li class="nav-item  {{ Request::is('home/perizinan*')?'active':'' }} ">
         <span class="nav-link  collapsed  d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#submenu-perizinan">
           <span>
           <span class="sidebar-icon">
@@ -234,7 +234,7 @@
         </span>
           <div class="multi-level collapse " role="list" id="submenu-perizinan" aria-expanded="false">
           <ul class="flex-column nav">
-            <li class="nav-item {{ Request::is('dashboard/perizinan/alur*')?'active':'' }}">
+            <li class="nav-item {{ Request::is('home/perizinan/alur*')?'active':'' }}">
               <a class="nav-link" href="/home/perizinan/alur">
                 <span>
                   <span class="sidebar-icon">
@@ -245,7 +245,7 @@
                 
               </a>
             </li>
-            <li class="nav-item {{ Request::is('dashboard/perizinan/linkskm*')?'active':'' }}">
+            <li class="nav-item {{ Request::is('home/perizinan/linkskm*')?'active':'' }}">
               <a class="nav-link" href="/home/perizinan/linkskm">
                 <span>
                   <span class="sidebar-icon">
@@ -262,7 +262,7 @@
           </ul>
           </div>
       </li>
-      <li class="nav-item  {{ Request::is('dashboard/ppid*')?'active':'' }} ">
+      <li class="nav-item  {{ Request::is('home/ppid*')?'active':'' }} ">
         <a href="/home/ppid"  class="nav-link d-flex justify-content-between">
           <span>
             <span class="sidebar-icon">
@@ -275,7 +275,7 @@
           </span>
         </a>
       </li>
-      <li class="nav-item  {{ Request::is('dashboard/ppid*')?'active':'' }} ">
+      <li class="nav-item  {{ Request::is('home/ppid*')?'active':'' }} ">
         <span class="nav-link  collapsed  d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#submenu-pengaduan">
           <span>
           <span class="sidebar-icon">
@@ -294,7 +294,7 @@
         </span>
         <div class="multi-level collapse " role="list" id="submenu-pengaduan" aria-expanded="false">
           <ul class="flex-column nav">
-            <li class="nav-item {{ Request::is('dashboard/pengaduan/aduan*')?'active':'' }}">
+            <li class="nav-item {{ Request::is('home/pengaduan/aduan*')?'active':'' }}">
               <a class="nav-link" href="/home/pengaduan/aduan">
                 <span>
                   <span class="sidebar-icon">
@@ -307,7 +307,7 @@
                 </span>
               </a>
             </li>
-            <li class="nav-item {{ Request::is('dashboard/pengaduan/laporan*')?'active':'' }}">
+            <li class="nav-item {{ Request::is('home/pengaduan/laporan*')?'active':'' }}">
               <a class="nav-link" href="/home/pengaduan/laporan">
                 <span>
                   <span class="sidebar-icon">
@@ -321,7 +321,7 @@
                 
               </a>
             </li>
-            <li class="nav-item {{ Request::is('dashboard/pengaduan/petugas*')?'active':'' }}">
+            <li class="nav-item {{ Request::is('home/pengaduan/petugas*')?'active':'' }}">
               <a class="nav-link" href="/home/pengaduan/petugas">
                 <span>
                   <span class="sidebar-icon">
@@ -336,7 +336,7 @@
                 
               </a>
             </li>
-            <li class="nav-item {{ Request::is('dashboard/pengaduan/alur*')?'active':'' }}">
+            <li class="nav-item {{ Request::is('home/pengaduan/alur*')?'active':'' }}">
               <a class="nav-link" href="/home/pengaduan/alur">
                 <span>
                   <span class="sidebar-icon">
@@ -353,7 +353,7 @@
           </ul>
           </div> 
       </li>
-      <li class="nav-item  {{ Request::is('dashboard/faq*')?'active':'' }} ">
+      <li class="nav-item  {{ Request::is('home/faq*')?'active':'' }} ">
         <a href="/home/faq"  class="nav-link d-flex justify-content-between">
           <span>
             <span class="sidebar-icon">
@@ -365,6 +365,42 @@
             <span class="sidebar-text">F.A.Q</span> 
           </span>
         </a>
+      </li>
+      <li class="nav-item  {{ Request::is('home/pengaturan*')?'active':'' }} ">
+        <span class="nav-link  collapsed  d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#submenu-pengaturan">
+          <span>
+          <span class="sidebar-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon icon-sm">
+              <path d="M4.913 2.658c2.075-.27 4.19-.408 6.337-.408 2.147 0 4.262.139 6.337.408 1.922.25 3.291 1.861 3.405 3.727a4.403 4.403 0 00-1.032-.211 50.89 50.89 0 00-8.42 0c-2.358.196-4.04 2.19-4.04 4.434v4.286a4.47 4.47 0 002.433 3.984L7.28 21.53A.75.75 0 016 21v-4.03a48.527 48.527 0 01-1.087-.128C2.905 16.58 1.5 14.833 1.5 12.862V6.638c0-1.97 1.405-3.718 3.413-3.979z" />
+              <path d="M15.75 7.5c-1.376 0-2.739.057-4.086.169C10.124 7.797 9 9.103 9 10.609v4.285c0 1.507 1.128 2.814 2.67 2.94 1.243.102 2.5.157 3.768.165l2.782 2.781a.75.75 0 001.28-.53v-2.39l.33-.026c1.542-.125 2.67-1.433 2.67-2.94v-4.286c0-1.505-1.125-2.811-2.664-2.94A49.392 49.392 0 0015.75 7.5z" />
+            </svg>
+            
+                       
+          </span>
+          <span class="sidebar-text">Pengaturan</span>
+          <span class="link-arrow">
+            <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+          </span>
+          </span>
+        </span>
+        <div class="multi-level collapse " role="list" id="submenu-pengaturan" aria-expanded="false">
+          <ul class="flex-column nav">
+            <li class="nav-item {{ Request::is('home/pengaturan/user*')?'active':'' }}">
+              <a class="nav-link" href="/home/pengaturan/user">
+                <span>
+                  <span class="sidebar-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon icon-sm">
+                    <path fill-rule="evenodd" d="M5.625 1.5H9a3.75 3.75 0 013.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 013.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 01-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875zM9.75 17.25a.75.75 0 00-1.5 0V18a.75.75 0 001.5 0v-.75zm2.25-3a.75.75 0 01.75.75v3a.75.75 0 01-1.5 0v-3a.75.75 0 01.75-.75zm3.75-1.5a.75.75 0 00-1.5 0V18a.75.75 0 001.5 0v-5.25z" clip-rule="evenodd" />
+                    <path d="M14.25 5.25a5.23 5.23 0 00-1.279-3.434 9.768 9.768 0 016.963 6.963A5.23 5.23 0 0016.5 7.5h-1.875a.375.375 0 01-.375-.375V5.25z" />
+                  </svg> 
+                </span>                 
+                  <span class="sidebar-text">User</span>
+                </span>
+              </a>
+            </li>
+            
+          </ul>
+          </div> 
       </li>
     </ul>
   </div>

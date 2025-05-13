@@ -7,7 +7,7 @@
   <div class="d-lg-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
     <div class="col-auto d-flex justify-content-between ps-0 mb-4 mb-lg-0">
         <div class="me-lg-3">
-                <a href="/dashboard/profil/organisasi" class="btn btn-secondary d-inline-flex align-items-center me-2 "
+                <a href="/home/profil/organisasi" class="btn btn-secondary d-inline-flex align-items-center me-2 "
                      aria-haspopup="true" aria-expanded="false">
                     <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" /></svg>
                      Kembali
@@ -17,14 +17,14 @@
             <a href="/posts/" class="btn btn-gray-800 d-inline-flex align-items-center me-2"data-bs-toggle="tooltip" data-bs-placement="bottom" title="Lihat Berita" target="_blank">
                 <svg class="icon icon-xs text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" /><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" /></svg>
             </a> 
-            <a href="/dashboard/profil/organisasi/{{ $post->slug }}/edit" class="btn btn-gray-800 d-inline-flex align-items-center me-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit">
+            <a href="/home/profil/organisasi/{{ $post->slug }}/edit" class="btn btn-gray-800 d-inline-flex align-items-center me-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit">
                 <svg class="icon icon-xs text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
                     <path fillRule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clipRule="evenodd" /></svg>
             </a>
          
             
-            <form method="post" action="/dashboard/profil/organisasi/{{ $post->slug }}" class="d-inline">
+            <form method="post" action="/home/profil/organisasi/{{ $post->slug }}" class="d-inline">
                 @method('delete')
                 @csrf
             <button class="btn btn-gray-800 text-white d-inline-flex align-items-center me-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Hapus" onclick="return confirm('Anda Yakin ??')">

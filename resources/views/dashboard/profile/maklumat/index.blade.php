@@ -7,7 +7,7 @@
   <div class="d-lg-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
     <div class="col-auto d-flex justify-content-between ps-0 mb-4 mb-lg-0">
         <div class="me-lg-3">
-                <a href="/dashboard/profil/maklumat/create" class="btn btn-secondary d-inline-flex align-items-center me-2"
+                <a href="/home/profil/maklumat/create" class="btn btn-secondary d-inline-flex align-items-center me-2"
                      aria-haspopup="true" aria-expanded="false">
                     <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
@@ -40,14 +40,14 @@
                                 <span class="visually-hidden">Toggle Dropdown</span>
                             </button>
                             <div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
-                                <a class="dropdown-item d-flex align-items-center" href="/dashboard/profil/maklumat/{{ $maklumat->slug }}/edit">
+                                <a class="dropdown-item d-flex align-items-center" href="/home/profil/maklumat/{{ $maklumat->slug }}/edit">
                                     <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path>
                                         <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path>
                                     </svg>
                                     Edit 
                                 </a>
-                                <form method="post" action="/dashboard/profil/maklumat/{{ $maklumat->slug }}">
+                                <form method="post" action="/home/profil/maklumat/{{ $maklumat->slug }}">
                                     @method('delete')
                                     @csrf
                                 <button class="dropdown-item d-flex align-items-center" onclick="return confirm('Anda Yakin ??')">

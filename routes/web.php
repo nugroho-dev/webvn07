@@ -160,6 +160,7 @@ Route::resource('/home/pengaduan/aduan', DashboardAduanController::class)->middl
 //Route::get('/home/pengaduan/detail/laporan/checkSlug', [DashboardLaporanPengaduanController::class, 'checkSlug'])->middleware('auth');
 //Route::resource('/home/pengaduan/detail/laporan', DashboardLaporanPengaduanController::class)->middleware('auth');
 Route::middleware('auth')->group(function () {
-    Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
-    Route::post('/users', [UserController::class, 'store'])->name('users.store');
+    Route::get('/home/pengaturan/users', [UserController::class, 'index']);
+    Route::get('/home/pengaturan/users/create', [UserController::class, 'create']);
+    Route::post('/home/pengaturan//users', [UserController::class, 'store']);
 });

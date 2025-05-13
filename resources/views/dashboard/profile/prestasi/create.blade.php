@@ -8,7 +8,7 @@
     <div class="col-auto d-flex justify-content-between ps-0 mb-4 mb-lg-0">
         <div class="me-lg-3">
             
-                <a href="/dashboard/profil/prestasi" class="btn btn-secondary d-inline-flex align-items-center me-2 "
+                <a href="/home/profil/prestasi" class="btn btn-secondary d-inline-flex align-items-center me-2 "
                      aria-haspopup="true" aria-expanded="false">
                     <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" /></svg>
                      Kembali
@@ -24,7 +24,7 @@
         <div class="card border-0 shadow components-section">
             <div class="card-body"> 
                 <div class="container">
-                        <form method="post" action="/dashboard/profil/prestasi" enctype="multipart/form-data">
+                        <form method="post" action="/home/profil/prestasi" enctype="multipart/form-data">
                             @csrf
                         <!-- Form -->
                         <div class="row mb-4">
@@ -96,7 +96,7 @@
     const slug = document.querySelector('#slug');
 
     title.addEventListener('change', function(){
-        fetch('/dashboard/profil/prestasi/checkSlug?title='+ title.value)
+        fetch('/home/profil/prestasi/checkSlug?title='+ title.value)
         .then(response=>response.json())
         .then(data=>slug.value=data.slug)
     });

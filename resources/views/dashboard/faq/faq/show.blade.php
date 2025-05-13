@@ -8,19 +8,19 @@
     <div class="col-auto d-flex justify-content-between ps-0 mb-4 mb-lg-0">
         <div class="me-lg-3">
             
-                <a href="/dashboard/detail/spsop?category={{ $slugcat }}" class="btn btn-secondary d-inline-flex align-items-center me-2 "
+                <a href="/home/detail/spsop?category={{ $slugcat }}" class="btn btn-secondary d-inline-flex align-items-center me-2 "
                      aria-haspopup="true" aria-expanded="false">
                     <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" /></svg>
                      Kembali
             </a>
             
         </div>
-        <a href="/dashboard/detail/spsop/{{ $post->slug }}/edit?category={{ $slugcat }}" class="btn btn-gray-800 d-inline-flex align-items-center me-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit">
+        <a href="/home/detail/spsop/{{ $post->slug }}/edit?category={{ $slugcat }}" class="btn btn-gray-800 d-inline-flex align-items-center me-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit">
           <svg class="icon icon-xs text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
               <path fillRule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clipRule="evenodd" /></svg>
       </a>
-      <form method="post" action="/dashboard/detail/spsop/{{ $post->slug }}" class="d-inline">
+      <form method="post" action="/home/detail/spsop/{{ $post->slug }}" class="d-inline">
         @method('delete')
         @csrf
         <input type="hidden" class="form-control" id="slugcat" name="slugcat" value="{{ $slugcat }}">
@@ -38,7 +38,7 @@
         <div class="card border-0 shadow components-section">
             <div class="card-body"> 
                 <div class="container">
-                        <form method="post" action="/dashboard/detail/spsop/{{ $post->slug }}" enctype="multipart/form-data">
+                        <form method="post" action="/home/detail/spsop/{{ $post->slug }}" enctype="multipart/form-data">
                           @method('put')
                           @csrf
                             <input type="hidden" class="form-control" id="categorysp_id" name="categorysp_id" value="{{ $categorysp_id }}">
@@ -281,7 +281,7 @@
     const slug = document.querySelector('#slug');
 
     title.addEventListener('change', function(){
-        fetch('/dashboard/spsop/checkSlug?title='+ title.value)
+        fetch('/home/spsop/checkSlug?title='+ title.value)
         .then(response=>response.json())
         .then(data=>slug.value=data.slug)
     });
