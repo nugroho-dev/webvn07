@@ -7,19 +7,10 @@
       <div class="row">
         <div class="col-lg-8 entries">
           <article class="entry entry-single">
-            <div class="entry-img">
-              @if($post->image)
-              <div style="max-height: 1080px; overflow:hidden; max-width: 1024px;" >
-                <img src="{{ asset('storage/'.$post->image) }}" alt="" class="img-fluid" />
-                </div>
-                @else
-              <img src="https://source.unsplash.com/random/1024x768/" alt="" class="img-fluid" />
-              @endif
-            </div>
+            
 
-            <h2 class="entry-title text-capitalize">
-              <a href="/posts/{{ $post->slug }}" >{{ $post->title }}</a
-              >
+            <h2 class="entry-title text-capitalize text-center">
+              <a href="/posts/{{ $post->slug }}" >{{ $post->title }}</a>
             </h2>
 
             <div class="entry-meta">
@@ -38,9 +29,11 @@
               </ul>
             </div>
 
-            <div class="entry-content"  style="text-align: justify;">
+            <div class="entry-content" style="text-align: justify">
               
-                {{ $post->body }}
+                <img src="{{ asset('storage/'.$post->image) }}" class="img-fluid rounded mx-auto d-block" alt="...">
+              
+                <p style="text-justify: auto"> {{ $post->body }} </p>
               
             </div>
 
