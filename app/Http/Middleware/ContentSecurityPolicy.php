@@ -36,7 +36,7 @@ class ContentSecurityPolicy
             "connect-src 'self' https://www.google-analytics.com https://analytics.google.com",
             "style-src 'self' 'unsafe-inline' https://rsms.me/ https://code.jquery.com",
             "img-src 'self' data: https://www.google-analytics.com https://www.google.co.id",
-            "frame-src https://verifikasipdf.rootca.id/ https://www.google.com/ https://widgets.woxo.tech/ https://www.facebook.com/ https://platform.twitter.com https://syndication.twitter.com/ http://www.instagram.com https://www.youtube.com",
+            "frame-src https://verifikasipdf.rootca.id/ https://www.google.com/ https://widgets.woxo.tech/ https://www.facebook.com/ https://platform.twitter.com https://syndication.twitter.com/ https://www.instagram.com https://www.youtube.com",
             "base-uri 'self'",
             "form-action 'self'",
         ]));
