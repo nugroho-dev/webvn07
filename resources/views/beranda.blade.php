@@ -61,7 +61,7 @@
           @endforeach
         </div>
         <div class="text-center">
-          <a href="/posts/" class="btn btn-danger"><i class="bi bi-list-ul"></i> Lihat Semua</a> 
+          <a href="/berita?category=pengumuman" class="btn btn-danger"><i class="bi bi-list-ul"></i> Lihat Semua</a> 
           </div>
       </div>
     </section>
