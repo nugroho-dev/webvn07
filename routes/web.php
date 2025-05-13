@@ -54,7 +54,7 @@ use App\Http\Controllers\DashboardPostCategoriesController;
 use App\Http\Controllers\DashboardLaporanPengaduanController;
 //use App\Http\Controllers\DashboardTahunLaporanPengaduanController;
 use App\Http\Controllers\DashboardAduanController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardUserController;
 use App\Http\Middleware\VerifyRecaptcha;
 /*
 |--------------------------------------------------------------------------
@@ -160,7 +160,7 @@ Route::resource('/home/pengaduan/aduan', DashboardAduanController::class)->middl
 //Route::get('/home/pengaduan/detail/laporan/checkSlug', [DashboardLaporanPengaduanController::class, 'checkSlug'])->middleware('auth');
 //Route::resource('/home/pengaduan/detail/laporan', DashboardLaporanPengaduanController::class)->middleware('auth');
 Route::middleware('auth')->group(function () {
-    Route::get('/home/pengaturan/users', [UserController::class, 'index']);
-    Route::get('/home/pengaturan/users/create', [UserController::class, 'create']);
-    Route::post('/home/pengaturan//users', [UserController::class, 'store']);
+    Route::get('/home/pengaturan/users', [DashboardUserController::class, 'index']);
+    Route::get('/home/pengaturan/users/create', [DashboardUserController::class, 'create']);
+    Route::post('/home/pengaturan//users', [DashboardUserController::class, 'store']);
 });

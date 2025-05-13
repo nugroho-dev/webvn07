@@ -3,7 +3,7 @@
 <html lang="en">
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FQGV18Q2BT" integrity="sha384-d5dWGqFb7saRq/jdcyeBwDvm6K0lpDkGhohGsnu+XfRKO1m5Ed6vejM0hMJ7sTSM" crossorigin="anonymous" nonce="{{ $cspNonce }}"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FQGV18Q2BT" crossorigin="anonymous" nonce="{{ $cspNonce }}"></script>
 <script  nonce="{{ $cspNonce }}">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}

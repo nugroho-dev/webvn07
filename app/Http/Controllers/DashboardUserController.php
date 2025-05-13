@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class DashboardUserController extends Controller
 {
     public function index()
     {

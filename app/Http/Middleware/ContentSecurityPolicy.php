@@ -31,11 +31,12 @@ class ContentSecurityPolicy
         $response = $next($request);
         $response->headers->set('Content-Security-Policy', implode('; ', [
             "default-src 'none'",
-            "font-src 'self'",
-            "script-src 'self' 'nonce-{$nonce}'",
-            "style-src 'self' 'nonce-{$nonce}'",
-            "img-src 'self' data:",
-            "frame-src https://verifikasipdf.rootca.id/ https://www.google.com/",
+            "font-src 'self' https://rsms.me data:",
+            "script-src 'self' 'nonce-{$nonce}' https://code.jquery.com https://cdn2.woxo.tech https://platform.twitter.com/ http://www.instagram.com/",
+            "connect-src 'self' https://www.google-analytics.com https://analytics.google.com",
+            "style-src 'self' 'unsafe-inline' https://rsms.me/ https://code.jquery.com",
+            "img-src 'self' data: https://www.google-analytics.com https://www.google.co.id",
+            "frame-src https://verifikasipdf.rootca.id/ https://www.google.com/ https://widgets.woxo.tech/ https://www.facebook.com/ https://platform.twitter.com https://syndication.twitter.com/ http://www.instagram.com https://www.youtube.com",
             "base-uri 'self'",
             "form-action 'self'",
         ]));
