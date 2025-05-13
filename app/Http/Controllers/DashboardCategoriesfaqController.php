@@ -45,7 +45,7 @@ class DashboardCategoriesfaqController extends Controller
         //$validatedData['status'] = 'draft';
         //$validatedData['excerpt'] = Str::limit(strip_tags($request->body), 1000);
         Categoriesfaq::create($validatedData);
-        return redirect('/dashboard/faq')->with('success', 'Kategori Baru Berhasil di Tambahkan !');
+        return redirect('/home/faq')->with('success', 'Kategori Baru Berhasil di Tambahkan !');
     }
 
     /**
@@ -91,7 +91,7 @@ class DashboardCategoriesfaqController extends Controller
         //$validatedData['user_id'] = auth()->user()->id;
         //$validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
         Categoriesfaq::where('id', $faq->id)->update($validatedData);
-        return redirect('/dashboard/faq')->with('success', 'Data Berhasil di Ubah !');
+        return redirect('/home/faq')->with('success', 'Data Berhasil di Ubah !');
     }
 
     /**
@@ -107,9 +107,9 @@ class DashboardCategoriesfaqController extends Controller
 
             if (empty($idfaq->categoryfaq_id)) {
                 Categoriesfaq::destroy($faq->id);
-                return redirect('/dashboard/faq')->with('success', 'Data Berhasil di Hapus !');
+                return redirect('/home/faq')->with('success', 'Data Berhasil di Hapus !');
             } elseif ($idfaq->categoryfaq_id == $faq->id) {
-                return redirect('/dashboard/faq')->with('error', 'Data Tidak Bisa di Hapus !');
+                return redirect('/home/faq')->with('error', 'Data Tidak Bisa di Hapus !');
             }
         }
     }

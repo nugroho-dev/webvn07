@@ -38,7 +38,7 @@ class DashboardPostCategoriesController extends Controller
     {
         $validatedData = $request->validate(['name' => 'required|max:255|unique:categories', 'slug' => 'required|unique:categories']);
         Category::create($validatedData);
-        return redirect('/dashboard/category')->with('success', 'Artikel Baru Berhasil di Tambahkan !');
+        return redirect('/home/category')->with('success', 'Artikel Baru Berhasil di Tambahkan !');
     }
 
     /**
@@ -79,7 +79,7 @@ class DashboardPostCategoriesController extends Controller
         $validatedData = $request->validate($rules);
 
         Category::where('id', $category->id)->update($validatedData);
-        return redirect('/dashboard/category')->with('success', 'Data Berhasil di Ubah !');
+        return redirect('/home/category')->with('success', 'Data Berhasil di Ubah !');
     }
 
     /**
@@ -91,7 +91,7 @@ class DashboardPostCategoriesController extends Controller
     public function destroy(Category $category)
     {
         Category::destroy($category->id);
-        return redirect('/dashboard/category')->with('success', 'Data Berhasil di Hapus !');
+        return redirect('/home/category')->with('success', 'Data Berhasil di Hapus !');
     }
 
     public function checkSlug(Request $request)

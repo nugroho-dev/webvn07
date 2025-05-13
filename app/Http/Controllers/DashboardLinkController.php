@@ -45,7 +45,7 @@ class DashboardLinkController extends Controller
         //$validatedData['status'] = 'draft';
         //$validatedData['excerpt'] = Str::limit(strip_tags($request->body), 1000);
         Link::create($validatedData);
-        return redirect('/dashboard/beranda/link')->with('success', 'Link Baru Berhasil di Tambahkan !');
+        return redirect('/home/beranda/link')->with('success', 'Link Baru Berhasil di Tambahkan !');
     }
 
     /**
@@ -96,7 +96,7 @@ class DashboardLinkController extends Controller
         //$validatedData['user_id'] = auth()->user()->id;
         //$validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
         Link::where('id', $link->id)->update($validatedData);
-        return redirect('/dashboard/beranda/link')->with('success', 'Link Berhasil di Ubah !');
+        return redirect('/home/beranda/link')->with('success', 'Link Berhasil di Ubah !');
     }
 
     /**
@@ -111,7 +111,7 @@ class DashboardLinkController extends Controller
             Storage::delete($link->image);
         }
         Link::destroy($link->id);
-        return redirect('/dashboard/beranda/link')->with('success', 'link Berhasil di Hapus !');
+        return redirect('/home/beranda/link')->with('success', 'link Berhasil di Hapus !');
     }
     public function checkSlug(Request $request)
     {

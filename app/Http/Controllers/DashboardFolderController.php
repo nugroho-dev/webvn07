@@ -45,7 +45,7 @@ class DashboardFolderController extends Controller
         //$validatedData['status'] = 'draft';
         //$validatedData['excerpt'] = Str::limit(strip_tags($request->body), 1000);
         Folder::create($validatedData);
-        return redirect('/dashboard/download')->with('success', 'Kategori Baru Berhasil di Tambahkan !');
+        return redirect('/home/download')->with('success', 'Kategori Baru Berhasil di Tambahkan !');
     }
 
     /**
@@ -91,7 +91,7 @@ class DashboardFolderController extends Controller
         //$validatedData['user_id'] = auth()->user()->id;
         //$validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
         Folder::where('id', $download->id)->update($validatedData);
-        return redirect('/dashboard/download')->with('success', 'Data Berhasil di Ubah !');
+        return redirect('/home/download')->with('success', 'Data Berhasil di Ubah !');
     }
 
     /**
@@ -107,9 +107,9 @@ class DashboardFolderController extends Controller
 
             if (empty($idcat->id_folder)) {
                 Folder::destroy($download->id);
-                return redirect('/dashboard/download')->with('success', 'Data Berhasil di Hapus !');
+                return redirect('/home/download')->with('success', 'Data Berhasil di Hapus !');
             } elseif ($idcat->id_folder == $download->id) {
-                return redirect('/dashboard/download')->with('error', 'Data Tidak Bisa di Hapus !');
+                return redirect('/home/download')->with('error', 'Data Tidak Bisa di Hapus !');
             }
         }
     }

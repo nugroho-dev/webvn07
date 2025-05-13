@@ -47,7 +47,7 @@ class DashboardSpController extends Controller
         //$validatedData['status'] = 'draft';
         //$validatedData['excerpt'] = Str::limit(strip_tags($request->body), 1000);
         Categoriesps::create($validatedData);
-        return redirect('/dashboard/spsop')->with('success', 'Jenis Baru Berhasil di Tambahkan !');
+        return redirect('/home/spsop')->with('success', 'Jenis Baru Berhasil di Tambahkan !');
     }
 
     /**
@@ -93,7 +93,7 @@ class DashboardSpController extends Controller
         //$validatedData['user_id'] = auth()->user()->id;
         //$validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
         Categoriesps::where('id', $spsop->id)->update($validatedData);
-        return redirect('/dashboard/spsop')->with('success', 'Data Berhasil di Ubah !');
+        return redirect('/home/spsop')->with('success', 'Data Berhasil di Ubah !');
     }
 
     /**
@@ -109,9 +109,9 @@ class DashboardSpController extends Controller
 
             if (empty($sop->categorysp_id)) {
                 Categoriesps::destroy($spsop->id);
-                return redirect('/dashboard/spsop')->with('success', 'Data Berhasil di Hapus !');
+                return redirect('/home/spsop')->with('success', 'Data Berhasil di Hapus !');
             } elseif ($sop->categorysp_id  == $spsop->id) {
-                return redirect('/dashboard/spsop')->with('error', 'Data Tidak Bisa di Hapus !');
+                return redirect('/home/spsop')->with('error', 'Data Tidak Bisa di Hapus !');
             }
         }
     }

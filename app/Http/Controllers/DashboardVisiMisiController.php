@@ -47,7 +47,7 @@ class DashboardVisiMisiController extends Controller
         $validatedData['status'] = 'draft';
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 1000);
         Visimisi::create($validatedData);
-        return redirect('/dashboard/profil/visimisi/' . $request->slug)->with('success', 'Artikel Baru Berhasil di Tambahkan !');
+        return redirect('/home/profil/visimisi/' . $request->slug)->with('success', 'Artikel Baru Berhasil di Tambahkan !');
     }
 
     /**
@@ -92,7 +92,7 @@ class DashboardVisiMisiController extends Controller
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
         Visimisi::where('id', $visimisi->id)->update($validatedData);
-        return redirect('/dashboard/profil/visimisi/' . $request->slug)->with('success', 'Artikel Berhasil di Ubah !');
+        return redirect('/home/profil/visimisi/' . $request->slug)->with('success', 'Artikel Berhasil di Ubah !');
     }
 
     /**
@@ -105,7 +105,7 @@ class DashboardVisiMisiController extends Controller
     {
 
         Visimisi::destroy($visimisi->id);
-        return redirect('/dashboard/profil/visimisi')->with('success', 'Artikel Berhasil di Hapus !');
+        return redirect('/home/profil/visimisi')->with('success', 'Artikel Berhasil di Hapus !');
     }
     public function checkSlug(Request $request)
     {

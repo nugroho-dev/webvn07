@@ -39,7 +39,7 @@ class DashboardLinkSkmController extends Controller
         $validatedData = $request->validate(['title' => 'required|max:255', 'slug' => 'required|unique:performances',  'link' => 'max:255']);
 
         Linkskm::create($validatedData);
-        return redirect('/dashboard/perizinan/linkskm')->with('success', 'Data Baru Berhasil di Tambahkan !');
+        return redirect('/home/perizinan/linkskm')->with('success', 'Data Baru Berhasil di Tambahkan !');
     }
 
     /**
@@ -80,7 +80,7 @@ class DashboardLinkSkmController extends Controller
         $validatedData = $request->validate($rules);
 
         Linkskm::where('id', $linkskm->id)->update($validatedData);
-        return redirect('/dashboard/perizinan/linkskm')->with('success', 'Data Berhasil di Ubah !');
+        return redirect('/home/perizinan/linkskm')->with('success', 'Data Berhasil di Ubah !');
     }
 
     /**
@@ -92,7 +92,7 @@ class DashboardLinkSkmController extends Controller
     public function destroy(Linkskm $linkskm)
     {
         Linkskm::destroy($linkskm->id);
-        return redirect('/dashboard/perizinan/linkskm')->with('success', 'Data Berhasil di Hapus !');
+        return redirect('/home/perizinan/linkskm')->with('success', 'Data Berhasil di Hapus !');
     }
     public function checkSlug(Request $request)
     {

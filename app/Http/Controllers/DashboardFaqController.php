@@ -61,7 +61,7 @@ class DashboardFaqController extends Controller
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['excerpt'] = Str::limit(strip_tags($request->answer), 1000);
         Faq::create($validatedData);
-        return redirect('/dashboard/list/faq?view=' . $request->slugcat)->with('success', 'F.A.Q Baru Berhasil di Tambahkan !');
+        return redirect('/home/list/faq?view=' . $request->slugcat)->with('success', 'F.A.Q Baru Berhasil di Tambahkan !');
     }
 
     /**
@@ -122,7 +122,7 @@ class DashboardFaqController extends Controller
         //$validatedData['status'] = 'draft';
         //$validatedData['excerpt'] = Str::limit(strip_tags($request->body), 1000);
         Faq::where('id', $faq->id)->update($validatedData);
-        return redirect('/dashboard/list/faq?view='. $slug)->with('success', 'Data  Berhasil di Ubah !');
+        return redirect('/home/list/faq?view='. $slug)->with('success', 'Data  Berhasil di Ubah !');
     }
 
     /**
@@ -135,7 +135,7 @@ class DashboardFaqController extends Controller
     {
         $slugcat = request('slugcat');
         Faq::destroy($faq->id);
-        return redirect('/dashboard/list/faq?view=' . $slugcat)->with('success', 'Artikel Berhasil di Hapus !');
+        return redirect('/home/list/faq?view=' . $slugcat)->with('success', 'Artikel Berhasil di Hapus !');
     }
     public function checkSlug(Request $request)
     {

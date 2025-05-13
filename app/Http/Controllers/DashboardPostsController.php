@@ -49,7 +49,7 @@ class DashboardPostsController extends Controller
         $validatedData['status'] = 'draft';
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 1000);
         Post::create($validatedData);
-        return redirect('/dashboard/posts/' . $request->slug)->with('success', 'Artikel Baru Berhasil di Tambahkan !');
+        return redirect('/home/posts/' . $request->slug)->with('success', 'Artikel Baru Berhasil di Tambahkan !');
     }
 
     /**
@@ -100,7 +100,7 @@ class DashboardPostsController extends Controller
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
         Post::where('id', $post->id)->update($validatedData);
-        return redirect('/dashboard/posts/' . $request->slug)->with('success', 'Artikel Berhasil di Ubah !');
+        return redirect('/home/posts/' . $request->slug)->with('success', 'Artikel Berhasil di Ubah !');
     }
 
     /**
@@ -115,7 +115,7 @@ class DashboardPostsController extends Controller
             Storage::delete($post->image);
         }
         Post::destroy($post->id);
-        return redirect('/dashboard/posts')->with('success', 'Artikel Berhasil di Hapus !');
+        return redirect('/home/posts')->with('success', 'Artikel Berhasil di Hapus !');
     }
     public function checkSlug(Request $request)
     {

@@ -43,7 +43,7 @@ class DashboardPrestasiController extends Controller
             $validatedData['image'] = $request->file('image')->store('performances-images');
         }
         Performance::create($validatedData);
-        return redirect('/dashboard/profil/prestasi')->with('success', 'Artikel Baru Berhasil di Tambahkan !');
+        return redirect('/home/profil/prestasi')->with('success', 'Artikel Baru Berhasil di Tambahkan !');
     }
 
     /**
@@ -89,7 +89,7 @@ class DashboardPrestasiController extends Controller
             $validatedData['image'] = $request->file('image')->store('performances-images');
         }
         Performance::where('id', $prestasi->id)->update($validatedData);
-        return redirect('/dashboard/profil/prestasi')->with('success', 'Artikel Berhasil di Ubah !');
+        return redirect('/home/profil/prestasi')->with('success', 'Artikel Berhasil di Ubah !');
     }
 
     /**
@@ -104,7 +104,7 @@ class DashboardPrestasiController extends Controller
             Storage::delete($prestasi->image);
         }
         Performance::destroy($prestasi->id);
-        return redirect('/dashboard/profil/prestasi')->with('success', 'Artikel Berhasil di Hapus !');
+        return redirect('/home/profil/prestasi')->with('success', 'Artikel Berhasil di Hapus !');
     }
     public function checkSlug(Request $request)
     {

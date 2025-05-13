@@ -43,7 +43,7 @@ class DashboardMaklumatController extends Controller
             $validatedData['image'] = $request->file('image')->store('maklumats-images');
         }
         Maklumat::create($validatedData);
-        return redirect('/dashboard/profil/maklumat')->with('success', 'Artikel Baru Berhasil di Tambahkan !');
+        return redirect('/home/profil/maklumat')->with('success', 'Artikel Baru Berhasil di Tambahkan !');
     }
 
     /**
@@ -89,7 +89,7 @@ class DashboardMaklumatController extends Controller
             $validatedData['image'] = $request->file('image')->store('maklumats-images');
         }
         Maklumat::where('id', $maklumat->id)->update($validatedData);
-        return redirect('/dashboard/profil/maklumat')->with('success', 'Artikel Baru Berhasil di Tambahkan !');
+        return redirect('/home/profil/maklumat')->with('success', 'Artikel Baru Berhasil di Tambahkan !');
     }
 
     /**
@@ -104,7 +104,7 @@ class DashboardMaklumatController extends Controller
             Storage::delete($maklumat->image);
         }
         Maklumat::destroy($maklumat->id);
-        return redirect('/dashboard/profil/maklumat')->with('success', 'Artikel Berhasil di Hapus !');
+        return redirect('/home/profil/maklumat')->with('success', 'Artikel Berhasil di Hapus !');
     }
     public function checkSlug(Request $request)
     {

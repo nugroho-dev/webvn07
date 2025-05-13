@@ -47,7 +47,7 @@ class DashboardHeroController extends Controller
         //$validatedData['status'] = 'draft';
         //$validatedData['excerpt'] = Str::limit(strip_tags($request->body), 1000);
         Hero::create($validatedData);
-        return redirect('/dashboard/beranda/hero')->with('success', 'Hero Baru Berhasil di Tambahkan !');
+        return redirect('/home/beranda/hero')->with('success', 'Hero Baru Berhasil di Tambahkan !');
     }
 
     /**
@@ -100,7 +100,7 @@ class DashboardHeroController extends Controller
         //$validatedData['user_id'] = auth()->user()->id;
         //$validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
         Hero::where('id', $hero->id)->update($validatedData);
-        return redirect('/dashboard/beranda/hero')->with('success', 'Hero Berhasil di Ubah !');
+        return redirect('/home/beranda/hero')->with('success', 'Hero Berhasil di Ubah !');
     }
 
     /**
@@ -115,7 +115,7 @@ class DashboardHeroController extends Controller
             Storage::delete($hero->image);
         }
         Hero::destroy($hero->id);
-        return redirect('/dashboard/beranda/hero')->with('success', 'Hero Berhasil di Hapus !');
+        return redirect('/home/beranda/hero')->with('success', 'Hero Berhasil di Hapus !');
     }
     public function checkSlug(Request $request)
     {

@@ -71,7 +71,7 @@ class DashboardSpDetailController extends Controller
         //$validatedData['status'] = 'draft';
         //$validatedData['excerpt'] = Str::limit(strip_tags($request->body), 1000);
         Spsops::create($validatedData);
-        return redirect('/dashboard/detail/spsop?category=' . $slug)->with('success', 'data Baru Berhasil di Tambahkan !');
+        return redirect('/home/detail/spsop?category=' . $slug)->with('success', 'data Baru Berhasil di Tambahkan !');
     }
 
     /**
@@ -140,7 +140,7 @@ class DashboardSpDetailController extends Controller
         //$validatedData['status'] = 'draft';
         //$validatedData['excerpt'] = Str::limit(strip_tags($request->body), 1000);
         Spsops::where('id', $spsop->id)->update($validatedData);
-        return redirect('/dashboard/detail/spsop?category=' . $slug)->with('success', 'Data  Berhasil di Ubah !');
+        return redirect('/home/detail/spsop?category=' . $slug)->with('success', 'Data  Berhasil di Ubah !');
     }
 
     /**
@@ -157,7 +157,7 @@ class DashboardSpDetailController extends Controller
             $slugcat = $category->slug;
         }
         Spsops::destroy($spsop->id);
-        return redirect('/dashboard/detail/spsop?category=' . $slugcat)->with('success', 'Data Berhasil di Hapus !');
+        return redirect('/home/detail/spsop?category=' . $slugcat)->with('success', 'Data Berhasil di Hapus !');
     }
     public function checkSlug(Request $request)
     {

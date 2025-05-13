@@ -72,7 +72,7 @@ class DashboardCategoryFileController extends Controller
         //$validatedData['status'] = 'draft';
         //$validatedData['excerpt'] = Str::limit(strip_tags($request->body), 1000);
         Categoriesfile::create($validatedData);
-        return redirect('/dashboard/folder/download?folder=' . $slug)->with('success', 'data Baru Berhasil di Tambahkan !');
+        return redirect('/home/folder/download?folder=' . $slug)->with('success', 'data Baru Berhasil di Tambahkan !');
     }
 
     /**
@@ -133,7 +133,7 @@ class DashboardCategoryFileController extends Controller
         //$validatedData['status'] = 'draft';
         //$validatedData['excerpt'] = Str::limit(strip_tags($request->body), 1000);
         Categoriesfile::where('id', $download->id)->update($validatedData);
-        return redirect('/dashboard/folder/download?folder=' . $slug)->with('success', 'Data  Berhasil di Ubah !');
+        return redirect('/home/folder/download?folder=' . $slug)->with('success', 'Data  Berhasil di Ubah !');
     }
 
     /**
@@ -149,9 +149,9 @@ class DashboardCategoryFileController extends Controller
             $slugcat = request('slugcat');
             if (empty($id_catfile->id_categoriesfile)) {
                 Categoriesfile::destroy($download->id);
-                return redirect('/dashboard/folder/download?folder=' . $slugcat)->with('success', 'Data Berhasil di Hapus !');
+                return redirect('/home/folder/download?folder=' . $slugcat)->with('success', 'Data Berhasil di Hapus !');
             } elseif ($id_catfile->id_categoriesfile  == $download->id) {
-                return redirect('/dashboard/folder/download?folder=' . $slugcat)->with('error', 'Data Tidak Bisa di Hapus !');
+                return redirect('/home/folder/download?folder=' . $slugcat)->with('error', 'Data Tidak Bisa di Hapus !');
             }
         }
     }

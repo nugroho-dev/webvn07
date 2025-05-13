@@ -44,7 +44,7 @@ class DashboardOrganizationController extends Controller
             $validatedData['image'] = $request->file('image')->store('organization-images');
         }
         Organization::create($validatedData);
-        return redirect('/dashboard/profil/organisasi/' . $request->slug)->with('success', 'Data Pegawai Berhasil di Tambahkan !');
+        return redirect('/home/profil/organisasi/' . $request->slug)->with('success', 'Data Pegawai Berhasil di Tambahkan !');
     }
 
     /**
@@ -90,7 +90,7 @@ class DashboardOrganizationController extends Controller
             $validatedData['image'] = $request->file('image')->store('organization-images');
         }
         Organization::where('id', $organisasi->id)->update($validatedData);
-        return redirect('/dashboard/profil/organisasi/' . $request->slug)->with('success', 'Data Pegawai Berhasil di Ubah !');
+        return redirect('/home/profil/organisasi/' . $request->slug)->with('success', 'Data Pegawai Berhasil di Ubah !');
     }
 
     /**
@@ -105,7 +105,7 @@ class DashboardOrganizationController extends Controller
             Storage::delete($organisasi->image);
         }
         Organization::destroy($organisasi->id);
-        return redirect('/dashboard/profil/organisasi')->with('success', 'Artikel Berhasil di Hapus !');
+        return redirect('/home/profil/organisasi')->with('success', 'Artikel Berhasil di Hapus !');
     }
     public function checkSlug(Request $request)
     {

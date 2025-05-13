@@ -45,7 +45,7 @@ class DashboardServiceController extends Controller
         //$validatedData['status'] = 'draft';
         //$validatedData['excerpt'] = Str::limit(strip_tags($request->body), 1000);
         Services::create($validatedData);
-        return redirect('/dashboard/beranda/service')->with('success', 'Service Baru Berhasil di Tambahkan !');
+        return redirect('/home/beranda/service')->with('success', 'Service Baru Berhasil di Tambahkan !');
     }
 
     /**
@@ -91,7 +91,7 @@ class DashboardServiceController extends Controller
         //$validatedData['user_id'] = auth()->user()->id;
         //$validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
         Services::where('id', $service->id)->update($validatedData);
-        return redirect('/dashboard/beranda/service')->with('success', 'Layanan Berhasil di Ubah !');
+        return redirect('/home/beranda/service')->with('success', 'Layanan Berhasil di Ubah !');
     }
 
     /**
@@ -103,7 +103,7 @@ class DashboardServiceController extends Controller
     public function destroy(Services $service)
     {
         Services::destroy($service->id);
-        return redirect('/dashboard/beranda/service')->with('success', 'Service Berhasil di Hapus !');
+        return redirect('/home/beranda/service')->with('success', 'Service Berhasil di Hapus !');
     }
     public function checkSlug(Request $request)
     {

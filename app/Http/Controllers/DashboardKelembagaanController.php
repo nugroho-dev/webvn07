@@ -48,7 +48,7 @@ class DashboardKelembagaanController extends Controller
         $validatedData['status'] = 'draft';
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 1000);
         Kelembagaan::create($validatedData);
-        return redirect('/dashboard/profil/kelembagaan/' . $request->slug)->with('success', 'Artikel Baru Berhasil di Tambahkan !');
+        return redirect('/home/profil/kelembagaan/' . $request->slug)->with('success', 'Artikel Baru Berhasil di Tambahkan !');
     }
 
     /**
@@ -98,7 +98,7 @@ class DashboardKelembagaanController extends Controller
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
         Kelembagaan::where('id', $kelembagaan->id)->update($validatedData);
-        return redirect('/dashboard/profil/kelembagaan/' . $request->slug)->with('success', 'Artikel Berhasil di Ubah !');
+        return redirect('/home/profil/kelembagaan/' . $request->slug)->with('success', 'Artikel Berhasil di Ubah !');
     }
 
     /**
@@ -113,7 +113,7 @@ class DashboardKelembagaanController extends Controller
             Storage::delete($kelembagaan->image);
         }
         Kelembagaan::destroy($kelembagaan->id);
-        return redirect('/dashboard/profil/kelembagaan')->with('success', 'Artikel Berhasil di Hapus !');
+        return redirect('/home/profil/kelembagaan')->with('success', 'Artikel Berhasil di Hapus !');
     }
     public function checkSlug(Request $request)
     {

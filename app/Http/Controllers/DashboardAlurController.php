@@ -42,7 +42,7 @@ class DashboardAlurController extends Controller
             $validatedData['image'] = $request->file('image')->store('alur-images');
         }
         Alur::create($validatedData);
-        return redirect('/dashboard/perizinan/alur')->with('success', 'Data Baru Berhasil di Tambahkan !');
+        return redirect('/home/perizinan/alur')->with('success', 'Data Baru Berhasil di Tambahkan !');
     }
 
     /**
@@ -88,7 +88,7 @@ class DashboardAlurController extends Controller
             $validatedData['image'] = $request->file('image')->store('alur-images');
         }
         Alur::where('id', $alur->id)->update($validatedData);
-        return redirect('/dashboard/perizinan/alur')->with('success', 'Data Baru Berhasil di Tambahkan !');
+        return redirect('/home/perizinan/alur')->with('success', 'Data Baru Berhasil di Tambahkan !');
     }
 
     /**
@@ -103,7 +103,7 @@ class DashboardAlurController extends Controller
             Storage::delete($alur->image);
         }
         Alur::destroy($alur->id);
-        return redirect('/dashboard/perizinan/alur')->with('success', 'Data Berhasil di Hapus !');
+        return redirect('/home/perizinan/alur')->with('success', 'Data Berhasil di Hapus !');
     }
     public function checkSlug(Request $request)
     {
