@@ -31,7 +31,7 @@ class ContentSecurityPolicy
         $response = $next($request);
         $response->headers->set('Content-Security-Policy', implode('; ', [
             "default-src 'none'",
-            "font-src 'self' https://rsms.me data:",
+            "font-src 'self' https://rsms.me https://fonts.gstatic.com/ data:",
             "script-src 'self' 'nonce-{$nonce}' https://code.jquery.com https://cdn2.woxo.tech https://platform.twitter.com/ https://www.instagram.com/ https://cdnjs.cloudflare.com/ https://buttons.github.io/",
             "connect-src 'self' https://www.google-analytics.com https://analytics.google.com",
             "style-src 'self' 'unsafe-inline' https://rsms.me/ https://code.jquery.com https://fonts.googleapis.com/",
