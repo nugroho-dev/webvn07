@@ -336,7 +336,7 @@
 </main>
 <script src="/../../vendor/ckeditor/ckeditor.js"></script>
     <script src="/../../vendor/ckeditor/config.js"></script>
-<script>
+<script nonce={{ $cspNonce }}>
     CKEDITOR.replace( 'hukum' );
     CKEDITOR.replace( 'persyaratan' );
     CKEDITOR.replace( 'mekanisme' );
@@ -355,7 +355,7 @@
     CKEDITOR.replace( 'sop' );
     
 </script>
-<script>
+<script nonce={{ $cspNonce }}>
     const title = document.querySelector('#title');
     const slug = document.querySelector('#slug');
 
