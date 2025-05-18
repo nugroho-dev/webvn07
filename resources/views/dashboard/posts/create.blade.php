@@ -88,8 +88,8 @@
     </div>
 </div>   
 </main>
-<script src="/../../vendor/ckeditor/ckeditor.js"></script>
-    <script src="/../../vendor/ckeditor/config.js"></script>
+<script src="/../../vendor/ckeditor4/ckeditor.js"></script>
+<script src="/../../vendor/ckeditor4/config.js"></script>
 <script nonce={{ $cspNonce }}>
     CKEDITOR.replace( 'body' );
     

@@ -162,5 +162,8 @@ Route::resource('/home/pengaduan/aduan', DashboardAduanController::class)->middl
 Route::middleware('auth')->group(function () {
     Route::get('/home/pengaturan/users', [DashboardUserController::class, 'index']);
     Route::get('/home/pengaturan/users/create', [DashboardUserController::class, 'create']);
-    Route::post('/home/pengaturan//users', [DashboardUserController::class, 'store']);
+    Route::post('/home/pengaturan/users', [DashboardUserController::class, 'store']);
+    Route::get('/home/pengaturan/users/{id}/edit', [DashboardUserController::class, 'edit']);
+    Route::put('/home/pengaturan/users/{id}', [DashboardUserController::class, 'update']);
+    Route::delete('/home/pengaturan/users/{id}', [DashboardUserController::class, 'destroy']);
 });

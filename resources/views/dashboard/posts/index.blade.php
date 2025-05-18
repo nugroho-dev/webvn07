@@ -1,105 +1,219 @@
-@extends('dashboard.layouts.main')
- @section('container')
+@extends('dashboard.layouts.tabler.main')
 
-  @include('dashboard.layouts.sidebar')
-<main class="content">
-  @include('dashboard.layouts.header')
-  <div class="d-lg-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
-    <div class="col-auto d-flex justify-content-between ps-0 mb-4 mb-lg-0">
-        <div class="me-lg-3">
-                <a href="/home/posts/create" class="btn btn-secondary d-inline-flex align-items-center me-2"
-                     aria-haspopup="true" aria-expanded="false">
-                    <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                    </svg>
-                    Tambah Artikel
-                </a>
+@section('container')
+<div class="page-header d-print-none">
+    <div class="container-xl">
+      <div class="row g-2 align-items-center">
+        <div class="col">
+          <!-- Page pre-title -->
+          <div class="page-pretitle">Overview</div>
+          <h2 class="page-title">Daftar Berita</h2>
+        </div>
+        <!-- Page title actions -->
+        <div class="col-auto ms-auto d-print-none">
+          <div class="btn-list">
             
+            <a href="#" class="btn btn-primary btn-5 d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-report">
+              <!-- Download SVG icon from http://tabler.io/icons/icon/plus -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-2"
+              >
+                <path d="M12 5l0 14" />
+                <path d="M5 12l14 0" />
+              </svg>
+              Buat Berita
+            </a>
+            <a
+              href="#"
+              class="btn btn-primary btn-6 d-sm-none btn-icon"
+              data-bs-toggle="modal"
+              data-bs-target="#modal-report"
+              aria-label="Create new report"
+            >
+              <!-- Download SVG icon from http://tabler.io/icons/icon/plus -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-2"
+              >
+                <path d="M12 5l0 14" />
+                <path d="M5 12l14 0" />
+              </svg>
+            </a>
+          </div>
+          <!-- BEGIN MODAL -->
+          <!-- END MODAL -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-body">
+    <div class="container-xl">
+        <div class="row row-cards">
+            <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Berita</h3>
+                  </div>
+                  <div class="card-body border-bottom py-3">
+                    <div class="d-flex">
+                      
+                      <div class="ms-auto text-secondary">
+                        <form action="/home/posts" method="GET">
+                        Cari:
+                        <div class="ms-2 d-inline-block">
+                          <div class="input-group mb-3">
+                            
+                            <input type="text" name="search" class="form-control" placeholder="Cari Berita" aria-label="Cari Berita" aria-describedby="button-addon2"  value="{{ request('search') }}"">
+                            <button class="btn btn-primary" type="submit" id="button-addon2">Cari</button>
+                           
+                          </div>
+                        </div>
+                    </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-selectable card-table table-vcenter datatable">
+                      <thead>
+                        <tr>
+                          
+                          <th class="w-1">
+                            No.
+                            <!-- Download SVG icon from http://tabler.io/icons/icon/chevron-up -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-sm icon-thick icon-2">
+                              <path d="M6 15l6 -6l6 6"></path>
+                            </svg>
+                          </th>
+                          <th>Berita</th>
+                          <th>Status</th>
+                          <th>Kategori</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @foreach($posts as $key=>$post)
+                        <tr>
+                          <td><span class="text-secondary">{{ $posts->firstItem() + $key }}.</span></td>
+                          <td>
+                            <a href="#" data-slug="{{ $post->slug }}" class="text-reset btn-show" >{{ $post->title }}</a>
+                            <div class="text-muted">
+                                {{ $post->created_at->locale('id')->isoFormat('MMM Do, YYYY') }}
+                                Oleh. {{ $post->author->name }}
+                            </div>
+                          </td>
+                          <td class="text-capitalize text-nowrap">
+                            @if($post->status=='publish')
+                            <span class="badge bg-success me-1 text-capitalize"></span>{{ $post->status }}
+                            @elseif($post->status=='unpublish')
+                            <span class="badge bg-danger me-1 text-capitalize "></span>{{ $post->status }}
+                            @else
+                            <span class="badge bg-warning me-1 text-capitalize "></span>{{ $post->status }}
+                            @endif
+                            </td>
+                          </td>
+                          <td>{{$post->category->name}}</td>
+                          <td class="text-end">
+                            <span class="dropdown">
+                              <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
+                              <div class="dropdown-menu dropdown-menu-end">
+                                @if($post->status=='publish')
+                                <a class="dropdown-item text-danger" href="#"> Batalkan Publikasi  </a>
+                                @elseif($post->status=='unpublish')
+                                <a class="dropdown-item text-warning" href="#"> Draft </a>
+                                @else
+                                <a class="dropdown-item text-success" href="#"> Publikasi </a>
+                                @endif
+                                <a class="dropdown-item" href="#"> Ubah </a>
+                                <a class="dropdown-item" href="#"> Hapus </a>
+                              </div>
+                            </span>
+                          </td>
+                        </tr>
+                        @endforeach
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="card-footer d-flex align-items-center">
+                    {{ $posts->links() }}
+                  </div>
+                </div>
+              </div>
         </div>
     </div>
   </div>
-<div class="task-wrapper border bg-white shadow border-0 rounded">
-    @foreach($posts as $key=>$post)
-    <div class="card hover-state border-bottom rounded-0 py-3">
-        <div class="card-body d-sm-flex align-items-center flex-wrap flex-lg-nowrap py-0">
-            <div class="col-10 col-lg-10 px-0 mb-4 mb-md-0">
-                <div class="mb-2">
-                    <h3 class="h5">{{ $posts->firstItem() + $key }}. {{ $post->title }}</h3>
-                    <div class="d-block d-sm-flex">
-                        <div>
-                            <h4 class="h6 fw-normal text-gray d-flex align-items-center mb-3 mb-sm-0">
-                                <svg class="icon icon-xxs text-gray-500 me-2" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                {{ $post->created_at->locale('id')->isoFormat('MMM Do, YYYY') }}
-                            </h4>
-                        </div>
-                        <div class="ms-sm-3">
-                            @if($post->status=='publish')
-                            <span class="badge super-badge bg-success text-capitalize ">{{ $post->status }}</span>
-                            @elseif($post->status=='unpublish')
-                            <span class="badge super-badge bg-danger text-capitalize ">{{ $post->status }}</span>
-                            @else
-                            <span class="badge super-badge bg-warning text-capitalize ">{{ $post->status }}</span>
-                            @endif
-                            
-                        </div>
-                        <div class="ms-sm-3">
-                            <span class="badge super-badge bg-info text-capitalize">{{$post->category->name}}</span>
-                        </div>
-                    </div>
+  
+  <div class="modal modal-blur fade" id="showModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered " role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Berita</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+            <div class="row">
+                <div class="col-12">
+                <h3 class="text-capitalize" style="text-align: justify;"><span id="title"></span></h3>
+                
+                <div class="text-muted">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-user"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
+                     <span id="author"></span>
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-clock-hour-4"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M12 12l3 2" /><path d="M12 7v5" /></svg> <span id="created_at"></span>
                 </div>
-                <div>
-                    <a href="/home/posts/{{ $post->slug }}" class="fw-bold text-dark"><span class="fw-normal text-gray">
-                            {!!$post->excerpt!!}</span></a>
-                </div>
-            </div>
-            <div class="col-2 col-sm-2 col-lg-2 col-xl-2 d-none d-lg-block d-xl-inline-flex align-items-center ms-lg-auto text-right justify-content-end px-md-0">
-                <div class="dropdown">
-                    <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0"
-                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path>
-                        </svg>
-                        <span class="visually-hidden">Toggle Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
-                        <a class="dropdown-item d-flex align-items-center" href="/home/posts/{{ $post->slug }}/edit">
-                            <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path>
-                                <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path>
-                            </svg>
-                            Edit 
-                        </a>
-                        <form method="post" action="/home/posts/{{ $post->slug }}">
-                            @method('delete')
-                            @csrf
-                        <button class="dropdown-item d-flex align-items-center" onclick="return confirm('Anda Yakin ??')">
-                            <svg class="dropdown-icon text-danger me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path>
-                            </svg>
-                            Delete
-                        </button>
-                        </form>
-                    </div>
+                <img id="imageViewer" alt="" class="img-fluid rounded mx-auto d-block mt-3" />
+                <div class="mt-3 mb-3 lh-base" style="text-align: justify;"><span id="body"></span></div>
+                
+                <div class="text-muted">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-folder"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2" /></svg> <span id="category"></span>
                 </div>
             </div>
         </div>
-    </div>
-    @endforeach
-    <div class="row p-4">
-        <div class="col-12">
-            <div class="btn-group float-end text-uppercase">
-                {{ $posts->links() }}
-            </div>
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn me-auto" data-bs-dismiss="modal">Tutup</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Edit</button>
+        </div>
+      </div>
     </div>
-</div>
-
-</main>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script nonce="{{ $cspNonce }}" >
+  $(document).on('click', '.btn-show', function () {
+      var slug = $(this).data('slug');
+      $.ajax({
+          url: '/home/posts/' + slug ,
+          method: 'GET',
+          success: function (data) {
+              
+              $('#title').text(data.title);
+              $('#slug').text(data.slug);
+              $('#imageViewer').attr('src', data.image);
+              $('#image').text(data.image);
+              $('#excerpt').text(data.excerpt);
+              $('#body').text(data.body);
+              $('#category').text(data.category);
+              $('#author').text(data.author);
+              $('#created_at').text(data.created_at);
+              $('#showModal').modal('show');
+          }
+      });
+  });
+</script>
 @endsection

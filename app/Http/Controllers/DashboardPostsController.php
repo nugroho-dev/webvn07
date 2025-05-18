@@ -19,7 +19,7 @@ class DashboardPostsController extends Controller
      */
     public function index()
     {
-        return view('dashboard.posts.index', ['title' => 'Posts', 'posts' => Post::where('user_id', auth()->user()->id) ->orderBy('published_at', 'DESC')->paginate(20)]);
+        return view('dashboard.posts.index', ['title' => 'Posts', 'posts' => Post::orderBy('published_at', 'DESC')->filter(request(['search', 'category', 'author']))->paginate(20)]);
     }
 
     /**
@@ -60,7 +60,21 @@ class DashboardPostsController extends Controller
      */
     public function show(Post $post)
     {
-        return view('dashboard.posts.show', ['post' => $post, 'title' => 'Posting', 'now' => Carbon::now()]);
+        return response()->json([
+        'title' => $post->title,
+        'slug' => $post->slug,
+        
+        'image' => asset('storage/' . $post->image),
+        'created_at' =>  Carbon::parse($post->created_at)->locale('id')->isoFormat('MMM Do, YYYY'),
+        'body'=> $post->body,
+        'excerpt'=> $post->excerpt,
+        'published_at'=>  Carbon::parse($post->published_at)->locale('id')->isoFormat('MMM Do, YYYY'),
+        'status'=> $post->status,
+        'author'=> $post->author->name,
+        'category' => $post->category->name,
+        ]);
+        
+        //return view('dashboard.posts.show', ['post' => $post, 'title' => 'Posting', 'now' => Carbon::now()]);
     }
 
     /**

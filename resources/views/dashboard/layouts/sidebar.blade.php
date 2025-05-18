@@ -385,8 +385,8 @@
         </span>
         <div class="multi-level collapse " role="list" id="submenu-pengaturan" aria-expanded="false">
           <ul class="flex-column nav">
-            <li class="nav-item {{ Request::is('home/pengaturan/user*')?'active':'' }}">
-              <a class="nav-link" href="/home/pengaturan/user">
+            <li class="nav-item {{ Request::is('home/pengaturan/users*')?'active':'' }}">
+              <a class="nav-link" href="/home/pengaturan/users">
                 <span>
                   <span class="sidebar-icon">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon icon-sm">
