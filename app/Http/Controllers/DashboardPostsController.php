@@ -19,7 +19,7 @@ class DashboardPostsController extends Controller
      */
     public function index()
     {
-        return view('dashboard.posts.index', ['title' => 'Posts', 'posts' => Post::orderBy('published_at', 'DESC')->filter(request(['search', 'category', 'author']))->paginate(20)]);
+        return view('dashboard.posts.index', ['title' => 'Posts', 'categories' => Category::all(), 'posts' => Post::orderBy('published_at', 'DESC')->filter(request(['search', 'category', 'author']))->paginate(20)]);
     }
 
     /**

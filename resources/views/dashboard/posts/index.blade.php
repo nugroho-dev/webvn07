@@ -13,7 +13,7 @@
         <div class="col-auto ms-auto d-print-none">
           <div class="btn-list">
             
-            <a href="#" class="btn btn-primary btn-5 d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-report">
+            <a href="#" class="btn btn-primary btn-5 d-none d-sm-inline-block btn-news" data-bs-toggle="modal" data-bs-target="#modal-report">
               <!-- Download SVG icon from http://tabler.io/icons/icon/plus -->
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +80,7 @@
                         <div class="ms-2 d-inline-block">
                           <div class="input-group mb-3">
                             
-                            <input type="text" name="search" class="form-control" placeholder="Cari Berita" aria-label="Cari Berita" aria-describedby="button-addon2"  value="{{ request('search') }}"">
+                            <input type="text" name="search" class="form-control" placeholder="Cari Berita" aria-label="Cari Berita" aria-describedby="button-addon2"  value="{{ request('search') }}">
                             <button class="btn btn-primary" type="submit" id="button-addon2">Cari</button>
                            
                           </div>
@@ -193,6 +193,85 @@
       </div>
     </div>
   </div>
+  <div class="modal modal-blur fade" id="newNews" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Buat Berita</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">Judul</label>
+            <input type="text" class="form-control @error('title') is-invalid @enderror" id="titlenew" name="title" required autofocus value="{{ old('title') }}">
+          </div>
+          <label class="form-label">Slug</label>
+          <div class="mb-3">
+            <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slugnew" name="slug" required value="{{ old('slug') }}" readonly>
+            @error ('slug')
+            <div class="invalid-feedback">
+             {{ $message }}   
+            </div> 
+            @enderror
+          </div>
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="mb-3">
+                <label class="form-label">Gambar</label>
+                <input class="form-control @error('image') is-invalid @enderror" type="file" id="imagenew" name="image">
+                  @error ('image')
+                    <div class="invalid-feedback">
+                      {{ $message }}   
+                    </div> 
+                  @enderror
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="mb-3">
+                <label class="form-label">Kategori</label>
+                <select class="form-select @error('category_id') is-invalid @enderror" id="category" name="category_id">
+                  @foreach ($categories as $category)
+                  @if (old('category_id')==$category->id)
+                  <option value="{{ $category->id }}" class="text-capitalize" selected>{{ $category->name }}</option>
+                  @else
+                  <option value="{{ $category->id }}" class="text-capitalize">{{ $category->name }}</option>
+                  @endif
+                  @endforeach
+              </select>
+                
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="mb-3">
+                <img class="img-preview img-fluid mb-3 col-5 rounded mx-auto d-block">
+              </div>
+            </div>
+          </div>
+       
+          <div class="row">
+            <div class="col-lg-12">
+              <div>
+                <label class="form-label">Artikel</label>
+                <textarea class="form-control" id="hugerte-mytextarea" rows="3"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-link link-secondary btn-3" data-bs-dismiss="modal"> Cancel </a>
+          <a href="#" class="btn btn-primary btn-5 ms-auto" data-bs-dismiss="modal">
+            <!-- Download SVG icon from http://tabler.io/icons/icon/plus -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-2">
+              <path d="M12 5l0 14"></path>
+              <path d="M5 12l14 0"></path>
+            </svg>
+            Create new report
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/tabler/libs/hugerte/hugerte.min.js?1744816591" defer></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script nonce="{{ $cspNonce }}" >
   $(document).on('click', '.btn-show', function () {
@@ -215,5 +294,109 @@
           }
       });
   });
+  $(document).on('click', '.btn-news', function () {
+      $.ajax({
+          success: function (data) {
+              $('#newNews').modal('show');
+          }
+      });
+  });
+
+      
+    const title = document.querySelector('#titlenew');
+    const slug = document.querySelector('#slugnew');
+    
+    title.addEventListener('change', function(){
+        fetch('/home/posts/checkSlug?title='+ title.value)
+        .then(response=>response.json())
+        .then(data=>slug.value=data.slug)
+    });
+
+   const image = document.querySelector('#imagenew');
+   image.addEventListener('change', function () {
+    const imgPreview= document.querySelector('.img-preview');
+    imgPreview.style.display ='block';
+    const oFReader = new FileReader();
+    oFReader.readAsDataURL(image.files[0]);
+    oFReader.onload=function(oFREvent){
+        imgPreview.src=oFREvent.target.result;
+    }
+   
+    });
+      
+  
 </script>
+  <script nonce="{{ $cspNonce }}">
+    document.addEventListener("DOMContentLoaded", function () {
+    let options = {
+      selector: "#hugerte-mytextarea",
+      plugins: ["advlist", "autolink", "lists", "link", "image", "charmap", "preview",
+      "anchor", "searchreplace", "visualblocks", "code", "fullscreen",
+      "insertdatetime", "media", "table", "code", "help", "wordcount"],
+      toolbar: "undo redo | formatselect | " +
+      "bold italic backcolor | alignleft aligncenter " +
+      "alignright alignjustify | bullist numlist outdent indent | " +
+      "image | link | preview | removeformat",
+      images_upload_url: "/upload-image",
+      images_upload_credentials: true,
+      setup: function (editor) {
+        editor.on('init', function () {
+          console.log('Editor siap!');
+        });
+      },
+      images_upload_handler: (blobInfo) => {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+    xhr.open("POST", "/upload-image");
+
+    const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute("content");
+    if (token) {
+      xhr.setRequestHeader("X-CSRF-TOKEN", token);
+    }
+
+    xhr.onload = function () {
+      if (xhr.status !== 200) {
+        reject("HTTP Error: " + xhr.status);
+        return;
+      }
+
+      let json;
+
+      try {
+        json = JSON.parse(xhr.responseText);
+      } catch (e) {
+        reject("Invalid JSON: " + xhr.responseText);
+        return;
+      }
+
+      if (!json || typeof json.location !== "string") {
+        reject("Invalid response: " + xhr.responseText);
+        return;
+      }
+
+      resolve(json.location);
+    };
+
+    xhr.onerror = function () {
+      reject("Upload failed");
+    };
+
+    const formData = new FormData();
+    formData.append("file", blobInfo.blob(), blobInfo.filename());
+    xhr.send(formData);
+  });
+}
+    };
+
+    if (localStorage.getItem("tablerTheme") === "dark") {
+      options.skin = "oxide-dark";
+      options.content_css = "dark";
+    }
+
+    hugeRTE.init(options); // atau tinymce.init(options) kalau pakai tinymce langsung
+  });
+</script>
+
+
 @endsection

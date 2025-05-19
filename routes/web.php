@@ -56,6 +56,8 @@ use App\Http\Controllers\DashboardLaporanPengaduanController;
 use App\Http\Controllers\DashboardAduanController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Middleware\VerifyRecaptcha;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -166,4 +168,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/home/pengaturan/users/{id}/edit', [DashboardUserController::class, 'edit']);
     Route::put('/home/pengaturan/users/{id}', [DashboardUserController::class, 'update']);
     Route::delete('/home/pengaturan/users/{id}', [DashboardUserController::class, 'destroy']);
+
+Route::post('/upload-image', function (Request $request) {
+    if ($request->hasFile('file')) {
+        $path = $request->file('file')->store('public/uploads');
+        return response()->json([
+            'location' => asset($path) // ✅ aman dan rapi
+        ]);
+    }
+
+    return response()->json(['error' => 'No file uploaded'], 400);
+});
 });
