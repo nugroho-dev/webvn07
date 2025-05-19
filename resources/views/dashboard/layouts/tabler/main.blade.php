@@ -15,6 +15,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Dashboard - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
     <!-- BEGIN PAGE LEVEL STYLES -->
+    
+</style>
     <link href="/tabler/libs/jsvectormap/dist/jsvectormap.css?1744816593" rel="stylesheet" />
     <!-- END PAGE LEVEL STYLES -->
     <!-- BEGIN GLOBAL MANDATORY STYLES -->

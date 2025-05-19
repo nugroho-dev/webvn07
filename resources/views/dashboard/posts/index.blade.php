@@ -1,6 +1,7 @@
 @extends('dashboard.layouts.tabler.main')
 
 @section('container')
+
 <div class="page-header d-print-none">
     <div class="container-xl">
       <div class="row g-2 align-items-center">
@@ -193,7 +194,7 @@
       </div>
     </div>
   </div>
-  <div class="modal modal-blur fade" id="newNews" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal modal-blur fade" id="newNews" tabindex="-1" role="dialog" aria-hidden="true" >
     <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -252,7 +253,7 @@
             <div class="col-lg-12">
               <div>
                 <label class="form-label">Artikel</label>
-                <textarea class="form-control" id="hugerte-mytextarea" rows="3"></textarea>
+                <textarea class="form-control" id="hugerte-mytextarea" name="body" rows="3"></textarea>
               </div>
             </div>
           </div>
@@ -271,7 +272,10 @@
       </div>
     </div>
   </div>
-  <script src="/tabler/libs/hugerte/hugerte.min.js?1744816591" defer></script>
+
+  <!-- CSS fix z-index popup TinyMCE -->
+ 
+  <script src="https://cdn.tiny.cloud/1/70wjix7leqv220saf1b70muo6v2cwahyz0mud05w1cgvqtsr/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script nonce="{{ $cspNonce }}" >
   $(document).on('click', '.btn-show', function () {
@@ -327,24 +331,36 @@
   
 </script>
   <script nonce="{{ $cspNonce }}">
+    document.addEventListener('focusin', (e) => {
+  if (e.target.closest(".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
+    e.stopImmediatePropagation();
+  }
+});
     document.addEventListener("DOMContentLoaded", function () {
-    let options = {
+  tinymce.init({
       selector: "#hugerte-mytextarea",
-      plugins: ["advlist", "autolink", "lists", "link", "image", "charmap", "preview",
+      height: 300,
+    menubar: true,
+    branding: false,
+    plugins: [
+      "advlist", "autolink", "lists", "link", "image", "charmap", "preview",
       "anchor", "searchreplace", "visualblocks", "code", "fullscreen",
-      "insertdatetime", "media", "table", "code", "help", "wordcount"],
-      toolbar: "undo redo | formatselect | " +
+      "insertdatetime", "media", "table", "help", "wordcount"
+    ],
+    toolbar:
+      "undo redo | formatselect | blocks| fontfamily | fontsize | " +
       "bold italic backcolor | alignleft aligncenter " +
       "alignright alignjustify | bullist numlist outdent indent | " +
-      "image | link | preview | removeformat",
-      images_upload_url: "/upload-image",
-      images_upload_credentials: true,
-      setup: function (editor) {
-        editor.on('init', function () {
-          console.log('Editor siap!');
-        });
-      },
-      images_upload_handler: (blobInfo) => {
+      "link image media preview | removeformat",
+
+    content_style:
+      "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+
+    automatic_uploads: true,
+    images_upload_url: "/upload-image",
+    images_upload_credentials: true,
+
+    images_upload_handler: (blobInfo) => {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
@@ -387,15 +403,8 @@
     xhr.send(formData);
   });
 }
-    };
-
-    if (localStorage.getItem("tablerTheme") === "dark") {
-      options.skin = "oxide-dark";
-      options.content_css = "dark";
-    }
-
-    hugeRTE.init(options); // atau tinymce.init(options) kalau pakai tinymce langsung
   });
+});
 </script>
 
 

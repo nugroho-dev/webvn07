@@ -172,8 +172,9 @@ Route::middleware('auth')->group(function () {
 Route::post('/upload-image', function (Request $request) {
     if ($request->hasFile('file')) {
         $path = $request->file('file')->store('public/uploads');
+        $path = str_replace('public/', '', $path);
         return response()->json([
-            'location' => asset($path) // ✅ aman dan rapi
+            'location' => asset('storage/'.$path) 
         ]);
     }
 
