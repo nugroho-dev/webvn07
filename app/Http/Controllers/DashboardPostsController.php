@@ -19,7 +19,7 @@ class DashboardPostsController extends Controller
      */
     public function index()
     {
-        return view('dashboard.posts.index', ['title' => 'Posts', 'categories' => Category::all(), 'posts' => Post::orderBy('published_at', 'DESC')->filter(request(['search', 'category', 'author']))->paginate(20)]);
+        return view('dashboard.posts.index', ['title' => 'Posts', 'categories' => Category::all(), 'posts' => Post::orderBy('created_at', 'DESC')->filter(request(['search', 'category', 'author']))->paginate(20)]);
     }
 
     /**
@@ -49,7 +49,7 @@ class DashboardPostsController extends Controller
         $validatedData['status'] = 'draft';
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 1000);
         Post::create($validatedData);
-        return redirect('/home/posts/' . $request->slug)->with('success', 'Artikel Baru Berhasil di Tambahkan !');
+        return redirect('/home/posts/')->with('success', 'Artikel Baru Berhasil di Tambahkan !');
     }
 
     /**

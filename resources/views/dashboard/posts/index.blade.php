@@ -141,7 +141,7 @@
                                 @else
                                 <a class="dropdown-item text-success" href="#"> Publikasi </a>
                                 @endif
-                                <a class="dropdown-item" href="#"> Ubah </a>
+                                <a class="dropdown-item btn-edit-news" data-slug="{{ $post->slug }}" href="#"> Ubah </a>
                                 <a class="dropdown-item" href="#"> Hapus </a>
                               </div>
                             </span>
@@ -189,7 +189,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn me-auto" data-bs-dismiss="modal">Tutup</button>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Edit</button>
+          <button type="button" class="btn btn-primary btn-edit-news" data-slug="" id="btnEditFromShowModal" data-bs-dismiss="modal">Edit</button>
         </div>
       </div>
     </div>
@@ -197,11 +197,14 @@
   <div class="modal modal-blur fade" id="newNews" tabindex="-1" role="dialog" aria-hidden="true" >
     <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
       <div class="modal-content">
+       
         <div class="modal-header">
           <h5 class="modal-title">Buat Berita</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+          <form method="post" action="/home/posts" enctype="multipart/form-data">
+            @csrf
           <div class="mb-3">
             <label class="form-label">Judul</label>
             <input type="text" class="form-control @error('title') is-invalid @enderror" id="titlenew" name="title" required autofocus value="{{ old('title') }}">
@@ -253,22 +256,117 @@
             <div class="col-lg-12">
               <div>
                 <label class="form-label">Artikel</label>
-                <textarea class="form-control" id="hugerte-mytextarea" name="body" rows="3"></textarea>
+                <textarea  id="hugerte-mytextarea" name="body" class="form-control @error('body') is-invalid @enderror" placeholder="Tulis Disini......." rows="3"></textarea>
+                @error ('body')
+                  <div class="invalid-feedback">
+                    {{ $message }}   
+                  </div> 
+                @enderror
               </div>
             </div>
           </div>
         </div>
         <div class="modal-footer">
           <a href="#" class="btn btn-link link-secondary btn-3" data-bs-dismiss="modal"> Cancel </a>
-          <a href="#" class="btn btn-primary btn-5 ms-auto" data-bs-dismiss="modal">
+          <button class="btn btn-primary btn-5 ms-auto" type="submit">
             <!-- Download SVG icon from http://tabler.io/icons/icon/plus -->
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-2">
               <path d="M12 5l0 14"></path>
               <path d="M5 12l14 0"></path>
             </svg>
-            Create new report
-          </a>
+            Simpan
+          </button>
+        </form>
         </div>
+      
+      </div>
+    </div>
+  </div>
+  <div class="modal modal-blur fade" id="editNews" tabindex="-1" role="dialog" aria-hidden="true" >
+    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
+      <div class="modal-content">
+       
+        <div class="modal-header">
+          <h5 class="modal-title">Ubah Berita</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form method="post" action="/home/posts" enctype="multipart/form-data">
+            @csrf
+          <div class="mb-3">
+            <label class="form-label">Judul</label>
+            <input type="text" class="form-control @error('title') is-invalid @enderror" id="titleedit" name="title" required autofocus value="{{ old('title') }}">
+          </div>
+          <label class="form-label">Slug</label>
+          <div class="mb-3">
+            <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slugedit" name="slug" required value="{{ old('slug') }}" readonly>
+            @error ('slug')
+            <div class="invalid-feedback">
+             {{ $message }}   
+            </div> 
+            @enderror
+          </div>
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="mb-3">
+                <label class="form-label">Gambar</label>
+                <input class="form-control @error('image') is-invalid @enderror" type="file" id="imageedit" name="image">
+                  @error ('image')
+                    <div class="invalid-feedback">
+                      {{ $message }}   
+                    </div> 
+                  @enderror
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="mb-3">
+                <label class="form-label">Kategori</label>
+                <select class="form-select @error('category_id') is-invalid @enderror" id="category" name="category_id">
+                  @foreach ($categories as $category)
+                  @if (old('category_id')==$category->id)
+                  <option value="{{ $category->id }}" class="text-capitalize" selected>{{ $category->name }}</option>
+                  @else
+                  <option value="{{ $category->id }}" class="text-capitalize">{{ $category->name }}</option>
+                  @endif
+                  @endforeach
+              </select>
+                
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="mb-3">
+                <img class="img-preview img-fluid mb-3 col-5 rounded mx-auto d-block">
+              </div>
+            </div>
+          </div>
+       
+          <div class="row">
+            <div class="col-lg-12">
+              <div>
+                <label class="form-label">Artikel</label>
+                <textarea  id="hugerte-mytextarea" name="body" id="bodyedit" class="form-control @error('body') is-invalid @enderror" placeholder="Tulis Disini......." rows="3"></textarea>
+                @error ('body')
+                  <div class="invalid-feedback">
+                    {{ $message }}   
+                  </div> 
+                @enderror
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-link link-secondary btn-3" data-bs-dismiss="modal"> Cancel </a>
+          <button class="btn btn-primary btn-5 ms-auto" type="submit">
+            <!-- Download SVG icon from http://tabler.io/icons/icon/plus -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-2">
+              <path d="M12 5l0 14"></path>
+              <path d="M5 12l14 0"></path>
+            </svg>
+            Simpan
+          </button>
+        </form>
+        </div>
+      
       </div>
     </div>
   </div>
@@ -286,11 +384,12 @@
           success: function (data) {
               
               $('#title').text(data.title);
+              $('#btnEditFromShowModal').data('slug', data.slug);
               $('#slug').text(data.slug);
               $('#imageViewer').attr('src', data.image);
               $('#image').text(data.image);
               $('#excerpt').text(data.excerpt);
-              $('#body').text(data.body);
+              $('#body').html(data.body);
               $('#category').text(data.category);
               $('#author').text(data.author);
               $('#created_at').text(data.created_at);
@@ -305,7 +404,26 @@
           }
       });
   });
-
+  $(document).on('click', '.btn-edit-news', function () {
+      var slug = $(this).data('slug');
+      $.ajax({
+            url: '/home/posts/' + slug ,
+            method: 'GET',
+            success: function (data) {
+              console.log(data);
+              $('#titleedit').val(data.title);
+              $('#slugedit').val(data.slug);
+              $('#imageVieweredit').attr('src', data.image);
+              $('#imageedit').text(data.image);
+              $('#excerpt').text(data.excerpt);
+              $('#bodyedit').val(data.body);
+              $('#category').text(data.category);
+              $('#author').text(data.author);
+              $('#created_at').text(data.created_at);
+              $('#editNews').modal('show');
+          }
+      });
+  });
       
     const title = document.querySelector('#titlenew');
     const slug = document.querySelector('#slugnew');
