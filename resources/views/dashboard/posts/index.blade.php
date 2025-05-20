@@ -2,7 +2,7 @@
 
 @section('container')
 
-<div class="page-header d-print-none">
+ <div class="page-header d-print-none">
     <div class="container-xl">
       <div class="row g-2 align-items-center">
         <div class="col">
@@ -14,7 +14,7 @@
         <div class="col-auto ms-auto d-print-none">
           <div class="btn-list">
             
-            <a href="#" class="btn btn-primary btn-5 d-none d-sm-inline-block btn-news" data-bs-toggle="modal" data-bs-target="#modal-report">
+            <a href="/home/posts/create" class="btn btn-primary btn-5 d-none d-sm-inline-block">
               <!-- Download SVG icon from http://tabler.io/icons/icon/plus -->
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -34,10 +34,9 @@
               Buat Berita
             </a>
             <a
-              href="#"
+              href="/home/posts/create"
               class="btn btn-primary btn-6 d-sm-none btn-icon"
-              data-bs-toggle="modal"
-              data-bs-target="#modal-report"
+              
               aria-label="Create new report"
             >
               <!-- Download SVG icon from http://tabler.io/icons/icon/plus -->
@@ -141,7 +140,7 @@
                                 @else
                                 <a class="dropdown-item text-success" href="#"> Publikasi </a>
                                 @endif
-                                <a class="dropdown-item btn-edit-news" data-slug="{{ $post->slug }}" href="#"> Ubah </a>
+                                <a class="dropdown-item" href="/home/posts/{{ $post->slug }}/edit"> Ubah </a>
                                 <a class="dropdown-item" href="#"> Hapus </a>
                               </div>
                             </span>
@@ -188,8 +187,8 @@
         </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn me-auto" data-bs-dismiss="modal">Tutup</button>
-          <button type="button" class="btn btn-primary btn-edit-news" data-slug="" id="btnEditFromShowModal" data-bs-dismiss="modal">Edit</button>
+          <button type="button" class="btn " data-bs-dismiss="modal">Tutup</button>
+          
         </div>
       </div>
     </div>

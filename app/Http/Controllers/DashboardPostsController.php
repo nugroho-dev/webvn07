@@ -43,7 +43,7 @@ class DashboardPostsController extends Controller
 
         $validatedData = $request->validate(['title' => 'required|max:255', 'slug' => 'required|unique:posts', 'category_id' => 'required', 'body' => 'required', 'image' => 'image|file|max:1024']);
         if ($request->file('image')) {
-            $validatedData['image'] = $request->file('image')->store('post-images');
+            $validatedData['image'] = $request->file('image')->store('public/post-images');
         }
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['status'] = 'draft';
@@ -108,13 +108,13 @@ class DashboardPostsController extends Controller
             if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
-            $validatedData['image'] = $request->file('image')->store('post-images');
+            $validatedData['image'] = $request->file('image')->store('public/post-images');
         }
         $validatedData['published_at'] = $request->published_at;
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
         Post::where('id', $post->id)->update($validatedData);
-        return redirect('/home/posts/' . $request->slug)->with('success', 'Artikel Berhasil di Ubah !');
+        return redirect('/home/posts/')->with('success', 'Artikel Berhasil di Ubah !');
     }
 
     /**
