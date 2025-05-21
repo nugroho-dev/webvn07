@@ -59,6 +59,26 @@
           </div>
           <!-- BEGIN MODAL -->
           <!-- END MODAL -->
+        
+        </div>
+        <div class="row justify-content-md-center">
+          <div class="col-md-auto">
+             @if(session('success'))
+        <div id="success-alert" class="alert alert-success alert-dismissible" role="alert">
+          <div class="alert-icon">
+            <!-- Download SVG icon from http://tabler.io/icons/icon/check -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon alert-icon icon-2">
+              <path d="M5 12l5 5l10 -10"></path>
+            </svg>
+          </div>
+          <div>
+            <h4 class="alert-heading">Berhasil!</h4>
+            <div class="alert-description">{{ session('success') }}</div>
+          </div>
+          <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
+        </div>
+        @endif
+          </div>
         </div>
       </div>
     </div>
@@ -141,7 +161,7 @@
                                 <a class="dropdown-item text-success" href="#"> Publikasi </a>
                                 @endif
                                 <a class="dropdown-item" href="/home/posts/{{ $post->slug }}/edit"> Ubah </a>
-                                <a class="dropdown-item" href="#"> Hapus </a>
+                                <a class="dropdown-item btn-delete-news" href="#" data-slug="{{ $post->slug }}"> Hapus </a>
                               </div>
                             </span>
                           </td>
@@ -369,7 +389,41 @@
       </div>
     </div>
   </div>
-
+    <div class="modal modal-blur fade" id="deleteNews" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div class="modal-status bg-danger"></div>
+          <div class="modal-body text-center py-4">
+            <!-- Download SVG icon from http://tabler.io/icons/icon/alert-triangle -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon mb-2 text-danger icon-lg">
+              <path d="M12 9v4"></path>
+              <path d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.87l-8.106 -13.536a1.914 1.914 0 0 0 -3.274 0z"></path>
+              <path d="M12 16h.01"></path>
+            </svg>
+            <h3>Anda Yakin?</h3>
+            <div class="text-secondary">Hapus Artikel "<span id="titledelete"></span>" ?</div>
+          </div>
+          <div class="modal-footer">
+            <div class="w-100">
+              <div class="row">
+                <div class="col">
+                  <a href="#" class="btn btn-3 w-100" data-bs-dismiss="modal"> Batal </a>
+                </div>
+                <div class="col">
+                  <form method="post" id="delNews" action="">
+                      @method('delete')
+                      @csrf
+                          
+                  <button type="submit" class="btn btn-danger btn-4 w-100" data-bs-dismiss="modal"> Hapus </button>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   <!-- CSS fix z-index popup TinyMCE -->
  
   <script src="https://cdn.tiny.cloud/1/70wjix7leqv220saf1b70muo6v2cwahyz0mud05w1cgvqtsr/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
@@ -396,34 +450,22 @@
           }
       });
   });
-  $(document).on('click', '.btn-news', function () {
-      $.ajax({
-          success: function (data) {
-              $('#newNews').modal('show');
-          }
-      });
-  });
-  $(document).on('click', '.btn-edit-news', function () {
+ 
+  $(document).on('click', '.btn-delete-news', function () {
       var slug = $(this).data('slug');
       $.ajax({
             url: '/home/posts/' + slug ,
             method: 'GET',
             success: function (data) {
               console.log(data);
-              $('#titleedit').val(data.title);
-              $('#slugedit').val(data.slug);
-              $('#imageVieweredit').attr('src', data.image);
-              $('#imageedit').text(data.image);
-              $('#excerpt').text(data.excerpt);
-              $('#bodyedit').val(data.body);
-              $('#category').text(data.category);
-              $('#author').text(data.author);
-              $('#created_at').text(data.created_at);
-              $('#editNews').modal('show');
+              $('#titledelete').text(data.title);
+              $('#delNews').attr('action', '/home/posts/' + slug);
+              $('#deleteNews').modal('show');
           }
       });
   });
-      
+  
+    
     const title = document.querySelector('#titlenew');
     const slug = document.querySelector('#slugnew');
     
@@ -433,6 +475,7 @@
         .then(data=>slug.value=data.slug)
     });
 
+  // Menampilkan gambar preview
    const image = document.querySelector('#imagenew');
    image.addEventListener('change', function () {
     const imgPreview= document.querySelector('.img-preview');
@@ -448,79 +491,14 @@
   
 </script>
   <script nonce="{{ $cspNonce }}">
-    document.addEventListener('focusin', (e) => {
-  if (e.target.closest(".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
-    e.stopImmediatePropagation();
-  }
-});
-    document.addEventListener("DOMContentLoaded", function () {
-  tinymce.init({
-      selector: "#hugerte-mytextarea",
-      height: 300,
-    menubar: true,
-    branding: false,
-    plugins: [
-      "advlist", "autolink", "lists", "link", "image", "charmap", "preview",
-      "anchor", "searchreplace", "visualblocks", "code", "fullscreen",
-      "insertdatetime", "media", "table", "help", "wordcount"
-    ],
-    toolbar:
-      "undo redo | formatselect | blocks| fontfamily | fontsize | " +
-      "bold italic backcolor | alignleft aligncenter " +
-      "alignright alignjustify | bullist numlist outdent indent | " +
-      "link image media preview | removeformat",
-
-    content_style:
-      "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
-
-    automatic_uploads: true,
-    images_upload_url: "/upload-image",
-    images_upload_credentials: true,
-
-    images_upload_handler: (blobInfo) => {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.withCredentials = true;
-    xhr.open("POST", "/upload-image");
-
-    const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute("content");
-    if (token) {
-      xhr.setRequestHeader("X-CSRF-TOKEN", token);
+// Menghapus alert setelah 4 detik
+document.addEventListener("DOMContentLoaded", function () {
+    const alertBox = document.getElementById("success-alert");
+    if (alertBox) {
+        setTimeout(() => {
+            alertBox.remove(); // atau gunakan .style.display = "none";
+        }, 4000); // hilang setelah 4 detik
     }
-
-    xhr.onload = function () {
-      if (xhr.status !== 200) {
-        reject("HTTP Error: " + xhr.status);
-        return;
-      }
-
-      let json;
-
-      try {
-        json = JSON.parse(xhr.responseText);
-      } catch (e) {
-        reject("Invalid JSON: " + xhr.responseText);
-        return;
-      }
-
-      if (!json || typeof json.location !== "string") {
-        reject("Invalid response: " + xhr.responseText);
-        return;
-      }
-
-      resolve(json.location);
-    };
-
-    xhr.onerror = function () {
-      reject("Upload failed");
-    };
-
-    const formData = new FormData();
-    formData.append("file", blobInfo.blob(), blobInfo.filename());
-    xhr.send(formData);
-  });
-}
-  });
 });
 </script>
 
