@@ -154,11 +154,11 @@
                               <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
                               <div class="dropdown-menu dropdown-menu-end">
                                 @if($post->status=='publish')
-                                <a class="dropdown-item text-danger" href="#"> Batalkan Publikasi  </a>
+                                <button class="dropdown-item text-danger btn-launch-unpublish" data-slug="{{ $post->slug }}"> Batalkan Publikasi  </button>
                                 @elseif($post->status=='unpublish')
-                                <a class="dropdown-item text-warning" href="#"> Draft </a>
+                                <button class="dropdown-item text-warning btn-launch-draft" data-slug="{{ $post->slug }}"> Draft </button>
                                 @else
-                                <a class="dropdown-item text-success" href="#"> Publikasi </a>
+                                <button class="dropdown-item text-success btn-launch-publish" data-slug="{{ $post->slug }}" > Publikasi </button>
                                 @endif
                                 <a class="dropdown-item" href="/home/posts/{{ $post->slug }}/edit"> Ubah </a>
                                 <a class="dropdown-item btn-delete-news" href="#" data-slug="{{ $post->slug }}"> Hapus </a>
@@ -424,6 +424,35 @@
         </div>
       </div>
     </div>
+
+    <div class="modal modal-blur fade" id="launchNews" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-3 modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+                                 <span id="textNotif"></span> Artikel <span id="titleText"> ?</span>
+                               
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn me-auto" data-bs-dismiss="modal">Close</button>
+            <form method="post" id="launchFormNews" action="">
+                @method('put')
+                @csrf
+                <input type="hidden" name="title" id="titleLaunch">
+                 <input type="hidden" name="category_id" id="categoryId">
+                 <input type="hidden" name="body" id="bodyPub">
+                 <input type="hidden" name="slug" id="slug">
+                 <input type="hidden" name="published_at" id="published_at">
+                <input type="hidden" name="status" id="status">
+            <button type="submit" class="btn btn-primary">Simpan</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   <!-- CSS fix z-index popup TinyMCE -->
  
   <script src="https://cdn.tiny.cloud/1/70wjix7leqv220saf1b70muo6v2cwahyz0mud05w1cgvqtsr/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
@@ -464,7 +493,68 @@
           }
       });
   });
-  
+  $(document).on('click', '.btn-launch-publish', function () {
+      var slug = $(this).data('slug');
+      $.ajax({
+            url: '/home/posts/' + slug ,
+            method: 'GET',
+            success: function (data) {
+              console.log(data);
+              $('#titleLaunch').val(data.title);
+              $('#categoryId').val(data.category_id);
+              $('#bodyPub').val(data.body);
+              $('#slug').val(data.slug);
+              $('#textNotif').text(data.notif_publish);
+              $('#published_at').val(data.now);
+              $('#titleText').text(data.title);
+              $('#status').val(data.status_publish);
+              
+              $('#launchFormNews').attr('action', '/home/posts/' + slug);
+              $('#launchNews').modal('show');
+          }
+      });
+  });
+   $(document).on('click', '.btn-launch-draft', function () {
+      var slug = $(this).data('slug');
+      $.ajax({
+            url: '/home/posts/' + slug ,
+            method: 'GET',
+            success: function (data) {
+              console.log(data);
+              $('#titleLaunch').val(data.title);
+              $('#categoryId').val(data.category_id);
+              $('#bodyPub').val(data.body);
+              $('#slug').val(data.slug);
+              $('#textNotif').text(data.notif_draft);
+              $('#published_at').val(data.published_time);
+              $('#titleText').text(data.title);
+               $('#status').val(data.status_draft),
+           
+              $('#launchFormNews').attr('action', '/home/posts/' + slug);
+              $('#launchNews').modal('show');
+          }
+      });
+  }); $(document).on('click', '.btn-launch-unpublish', function () {
+      var slug = $(this).data('slug');
+      $.ajax({
+            url: '/home/posts/' + slug ,
+            method: 'GET',
+            success: function (data) {
+              console.log(data);
+              $('#titleLaunch').val(data.title);
+              $('#categoryId').val(data.category_id);
+              $('#bodyPub').val(data.body);
+              $('#slug').val(data.slug);
+              $('#textNotif').text(data.notif_unpublish);
+              $('#published_at').val(data.published_time);
+              $('#titleText').text(data.title);
+               $('#status').val(data.status_unpublish),
+              
+              $('#launchFormNews').attr('action', '/home/posts/' + slug);
+              $('#launchNews').modal('show');
+          }
+      });
+  });
     
     const title = document.querySelector('#titlenew');
     const slug = document.querySelector('#slugnew');

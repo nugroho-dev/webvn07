@@ -19,7 +19,7 @@ class DashboardPostsController extends Controller
      */
     public function index()
     {
-        return view('dashboard.posts.index', ['title' => 'Posts', 'categories' => Category::all(), 'posts' => Post::orderBy('created_at', 'DESC')->filter(request(['search', 'category', 'author']))->paginate(20)]);
+        return view('dashboard.posts.index', ['title' => 'Posts', 'categories' => Category::all(), 'posts' => Post::orderBy('created_at', 'DESC')->filter(request(['search', 'category', 'author']))->paginate(20), ]);
     }
 
     /**
@@ -43,7 +43,7 @@ class DashboardPostsController extends Controller
 
         $validatedData = $request->validate(['title' => 'required|max:255', 'slug' => 'required|unique:posts', 'category_id' => 'required', 'body' => 'required', 'image' => 'image|file|max:1024']);
         if ($request->file('image')) {
-            $validatedData['image'] = $request->file('image')->store('public/post-images');
+            $validatedData['image'] = $request->file('image')->store('/post-images');
         }
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['status'] = 'draft';
@@ -63,15 +63,23 @@ class DashboardPostsController extends Controller
         return response()->json([
         'title' => $post->title,
         'slug' => $post->slug,
-        
+         'category_id' => $post->category_id,
         'image' => asset('storage/' . $post->image),
         'created_at' =>  Carbon::parse($post->created_at)->locale('id')->isoFormat('MMM Do, YYYY'),
         'body'=> $post->body,
         'excerpt'=> $post->excerpt,
+        'published_time'=>  $post->published_at,
         'published_at'=>  Carbon::parse($post->published_at)->locale('id')->isoFormat('MMM Do, YYYY'),
         'status'=> $post->status,
         'author'=> $post->author->name,
         'category' => $post->category->name,
+        'notif_publish' => 'Publikasikan',
+        'notif_draft' => 'Kembali ke Draft',
+        'notif_unpublish' => 'Batalkan Publikasi',
+        'status_publish' => 'publish',
+        'status_draft' => 'draft',
+        'status_unpublish' => 'unpublish',
+        'now' => Carbon::now('Asia/Jakarta')->format('Y-m-d H:i:s'),
         ]);
         
         //return view('dashboard.posts.show', ['post' => $post, 'title' => 'Posting', 'now' => Carbon::now()]);
@@ -108,7 +116,7 @@ class DashboardPostsController extends Controller
             if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
-            $validatedData['image'] = $request->file('image')->store('public/post-images');
+            $validatedData['image'] = $request->file('image')->store('/post-images');
         }
         $validatedData['published_at'] = $request->published_at;
         $validatedData['user_id'] = auth()->user()->id;
