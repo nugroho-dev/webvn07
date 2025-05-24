@@ -118,7 +118,7 @@
               <span class="nav-link-title"> Home </span>
             </a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown {{ Request::is('home/post*')?'active':'' }}">
             <a
               class="nav-link dropdown-toggle"
               href="#navbar-base"
@@ -162,10 +162,10 @@
               <span class="nav-link-title"> Profil </span>
             </a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item {{ Request::is('home/spsop*')?'active':'' }}">
             <a
               class="nav-link dropdown-toggle"
-              href="#navbar-extra"
+              href="#"
               data-bs-toggle="dropdown"
               data-bs-auto-close="false"
               role="button"
@@ -191,41 +191,9 @@
             <div class="dropdown-menu">
               <div class="dropdown-menu-columns">
                 <div class="dropdown-menu-column">
-                  <a class="dropdown-item" href="./activity.html"> Activity </a>
-                  <a class="dropdown-item" href="./chat.html"> Chat </a>
-                  <a class="dropdown-item" href="./cookie-banner.html"> Cookie banner </a>
-                  <a class="dropdown-item" href="./empty.html"> Empty page </a>
-                  <a class="dropdown-item" href="./faq.html"> FAQ </a>
-                  <a class="dropdown-item" href="./gallery.html"> Gallery </a>
-                  <a class="dropdown-item" href="./invoice.html"> Invoice </a>
-                  <a class="dropdown-item" href="./job-listing.html"> Job listing </a>
-                  <a class="dropdown-item" href="./license.html"> License </a>
-                  <a class="dropdown-item" href="./logs.html"> Logs </a>
-                  <a class="dropdown-item" href="./marketing/index.html"> Marketing </a>
-                  <a class="dropdown-item" href="./music.html"> Music </a>
-                  <a class="dropdown-item" href="./page-loader.html"> Page loader </a>
-                </div>
-                <div class="dropdown-menu-column">
-                  <a class="dropdown-item" href="./photogrid.html"> Photogrid </a>
-                  <a class="dropdown-item" href="./pricing.html"> Pricing cards </a>
-                  <a class="dropdown-item" href="./pricing-table.html"> Pricing table </a>
-                  <a class="dropdown-item" href="./search-results.html"> Search results </a>
-                  <a class="dropdown-item" href="./settings.html"> Settings </a>
-                  <a class="dropdown-item" href="./signatures.html">
-                    Signatures
-                    <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                  <a class="dropdown-item" href="/home/spsop">
+                    SP & SOP
                   </a>
-                  <a class="dropdown-item" href="./tasks.html"> Tasks </a>
-                  <a class="dropdown-item" href="./text-features.html">
-                    Text features
-                    <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                  </a>
-                  <a class="dropdown-item" href="./trial-ended.html"> Trial ended </a>
-                  <a class="dropdown-item" href="./uptime.html"> Uptime monitor </a>
-                  <a class="dropdown-item" href="./users.html"> Users </a>
-                  <a class="dropdown-item" href="./widgets.html"> Widgets </a>
-                  <a class="dropdown-item" href="./wizard.html"> Wizard </a>
-                </div>
               </div>
             </div>
           </li>
